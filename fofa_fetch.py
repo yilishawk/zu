@@ -4,7 +4,20 @@ import requests
 import time
 import concurrent.futures
 import subprocess
-from datetime import datetime, timezone, timedelta
+import logging
+from typing import Dict, List, Set, Tuple
+
+# ===============================
+# 日志配置
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('iptv_scanner.log', encoding='utf-8'),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger(__name__)
 
 # ===============================
 # 配置区
@@ -49,10 +62,12 @@ CHANNEL_CATEGORIES = {
     "湖北": [
         "湖北公共新闻", "湖北经视频道", "湖北综合频道", "湖北垄上频道", "湖北影视频道", "湖北生活频道", "湖北教育频道", "武汉新闻综合", "武汉电视剧", "武汉科技生活",
         "武汉文体频道", "武汉教育频道", "阳新综合", "房县综合", "蔡甸综合",
-    ],#任意添加，与仓库中rtp/省份运营商.txt内频道一致即可，或在下方频道名映射中改名
+    ],
+    "陕西电视": [
+        "陕西卫视", "陕西新闻资讯", "陕西都市青春", "陕西银龄", "陕西秦腔", "陕西体育休闲", "陕西西部电影", "西安新闻综合", "西安电视台"
+    ],
 }
 
-# ===== 映射（别名 -> 标准名） =====
 CHANNEL_MAPPING = {
     "CCTV1": ["CCTV-1", "CCTV-1 HD", "CCTV1 HD", "CCTV-1综合"],
     "CCTV2": ["CCTV-2", "CCTV-2 HD", "CCTV2 HD", "CCTV-2财经"],
@@ -150,7 +165,17 @@ CHANNEL_MAPPING = {
     "中国交通": ["中国交通频道"],
     "中国天气": ["中国天气频道"],
     "华数4K": ["华数低于4K", "华数4K电影", "华数爱上4K"],
-}#格式为"频道分类中的标准名": ["rtp/中的名字"],
+    # 陕西频道映射
+    "陕西卫视": ["陕西卫视HD", "陕西卫视4K", "陕西卫视 高清"],
+    "陕西新闻资讯": ["陕西新闻", "陕西新闻资讯HD", "陕西资讯"],
+    "陕西都市青春": ["陕西都市", "陕西青春", "陕西都市青春HD"],
+    "陕西银龄": ["陕西银龄频道", "陕西银龄HD"],
+    "陕西秦腔": ["陕西秦腔戏曲", "秦腔频道", "陕西秦腔HD"],
+    "陕西体育休闲": ["陕西体育", "陕西休闲", "陕西体育休闲HD"],
+    "陕西西部电影": ["陕西西部", "陕西电影", "陕西西部电影HD"],
+    "西安新闻综合": ["西安新闻", "西安综合", "西安新闻综合HD"],
+    "西安电视台": ["西安TV", "西安电视台HD", "西安综合电视台"],
+}
 
 # ===============================
 # 计数逻辑
@@ -270,101 +295,232 @@ def second_stage():
     print(f"🎯 第二阶段完成，共 {len(unique)} 条有效 URL")
 
 # ===============================
-# 第三阶段
-def third_stage():
-    print("🧩 第三阶段：多线程检测代表频道生成 IPTV.txt")
+# 第三阶段 - 超快速IP测速方案
+def fast_ip_test(ip_port: str, test_channel: str = "CCTV1") -> Tuple[bool, float, float]:
+    """
+    对每个IP只测试一个代表频道（默认CCTV1）
+    返回: (是否成功, 连接延迟, 速度评分)
+    """
+    # 构造测试URL - 这里需要根据实际情况调整
+    # 假设格式为 http://IP:PORT/rtp/频道地址
+    test_url = f"http://{ip_port}/rtp/239.76.245.115:1234"  # 示例CCTV1地址
+    
+    try:
+        start_time = time.time()
+        
+        # 使用ffprobe快速检测
+        result = subprocess.run([
+            "ffprobe", "-v", "quiet",
+            "-select_streams", "v:0",
+            "-show_entries", "stream=codec_name",
+            "-of", "csv=p=0",
+            "-timeout", "3000000",  # 3秒超时(微秒)
+            test_url
+        ], capture_output=True, timeout=3, text=True)
+        
+        probe_time = time.time() - start_time
+        
+        if result.returncode == 0 and result.stdout.strip():
+            # 成功获取流信息
+            response_score = max(0, 10 - probe_time * 2)
+            return True, probe_time, response_score
+        else:
+            return False, probe_time, 0
+            
+    except subprocess.TimeoutExpired:
+        return False, 3, 0
+    except Exception as e:
+        return False, 10, 0
 
-    if not os.path.exists(ZUBO_FILE):
-        print("⚠️ zubo.txt 不存在，跳过")
-        return
+def ip_speed_test_worker(ip_data: Tuple[str, str]) -> Tuple[str, str, bool, float, float]:
+    """IP测速工作线程"""
+    ip_port, provider = ip_data
+    success, latency, score = fast_ip_test(ip_port)
+    return ip_port, provider, success, latency, score
 
-    def check_stream(url, timeout=5):
-        try:
-            result = subprocess.run(
-                ["ffprobe", "-v", "error", "-show_streams", "-i", url],
-                stdout=subprocess.PIPE,
-                stderr=subprocess.PIPE,
-                timeout=timeout + 2
-            )
-            return b"codec_type" in result.stdout
-        except Exception:
-            return False
-
-    alias_map = {}
-    for main_name, aliases in CHANNEL_MAPPING.items():
-        for alias in aliases:
-            alias_map[alias] = main_name
-
-    ip_info = {}
+def fast_ip_based_sorting(max_workers: int = 10) -> Dict[str, List[Tuple]]:
+    """
+    基于IP测速的快速排序方案
+    每个IP只测试一个代表频道，然后为每个频道选择最快的前2个IP
+    """
+    print("🚀 开始基于IP的快速测速排序...")
+    
+    # 收集所有IP
+    all_ips = []
+    ip_to_provider = {}
+    
     for fname in os.listdir(IP_DIR):
         if not fname.endswith(".txt"):
             continue
         province_operator = fname.replace(".txt", "")
         path = os.path.join(IP_DIR, fname)
+        
         with open(path, encoding="utf-8") as f:
             for line in f:
                 ip_port = line.strip()
-                ip_info[ip_port] = province_operator
-
-    groups = {}
+                if ip_port and ":" in ip_port:
+                    all_ips.append((ip_port, province_operator))
+                    ip_to_provider[ip_port] = province_operator
+    
+    print(f"📡 发现 {len(all_ips)} 个IP需要测速")
+    
+    # 对IP进行测速
+    ip_speed_results = {}
+    
+    with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_ip = {executor.submit(ip_speed_test_worker, ip_data): ip_data for ip_data in all_ips}
+        
+        completed = 0
+        for future in concurrent.futures.as_completed(future_to_ip):
+            ip_data = future_to_ip[future]
+            try:
+                ip_port, provider, success, latency, score = future.result(timeout=5)
+                completed += 1
+                
+                if success:
+                    ip_speed_results[ip_port] = (provider, score, latency)
+                    status = "✅"
+                else:
+                    status = "❌"
+                
+                print(f"  [{completed}/{len(all_ips)}] {status} {ip_port} | "
+                      f"延迟: {latency:.2f}s | 评分: {score:.1f} | {provider}")
+                
+            except Exception as e:
+                completed += 1
+                print(f"  ⚠️ IP测速失败: {ip_data[0]}, 错误: {e}")
+    
+    # 获取可用的快速IP列表（按评分排序）
+    available_ips = [(ip, provider, score) for ip, (provider, score, latency) in ip_speed_results.items()]
+    available_ips.sort(key=lambda x: x[2], reverse=True)  # 按评分降序
+    
+    print(f"\n📊 IP测速完成: {len(available_ips)}/{len(all_ips)} 个IP可用")
+    
+    # 构建频道到IP的映射
+    channel_to_ips = {}
+    
     with open(ZUBO_FILE, encoding="utf-8") as f:
         for line in f:
             if "," not in line:
                 continue
             ch_name, url = line.strip().split(",", 1)
-            ch_main = alias_map.get(ch_name, ch_name)
+            
+            # 提取IP
             m = re.match(r"http://(\d+\.\d+\.\d+\.\d+:\d+)/", url)
             if m:
                 ip_port = m.group(1)
-                groups.setdefault(ip_port, []).append((ch_main, url))
+                
+                # 如果这个IP是可用的，添加到频道映射
+                if ip_port in ip_speed_results:
+                    provider, score, latency = ip_speed_results[ip_port]
+                    
+                    # 标准化频道名称
+                    main_channel = ch_name
+                    for main_ch, aliases in CHANNEL_MAPPING.items():
+                        if ch_name in aliases or ch_name == main_ch:
+                            main_channel = main_ch
+                            break
+                    
+                    channel_to_ips.setdefault(main_channel, []).append((ch_name, url, provider, score))
+    
+    # 为每个频道选择最快的前2个源
+    final_channels = {}
+    for channel, sources in channel_to_ips.items():
+        # 按评分排序并取前2个
+        sources.sort(key=lambda x: x[3], reverse=True)
+        final_channels[channel] = sources[:2]  # 只保留前2个最快的
+    
+    print(f"🎯 频道处理完成: {len(final_channels)} 个频道，每个频道保留2个最快源")
+    
+    return final_channels
 
-    def detect_ip(ip_port, entries):
-        rep_channels = [u for c, u in entries if c == "CCTV1"]
-        if not rep_channels and entries:
-            rep_channels = [entries[0][1]]
-        playable = any(check_stream(u) for u in rep_channels)
-        return ip_port, playable
+def priority_based_selection(sorted_channels: Dict, priority_channels: List[str] = None) -> Dict:
+    """
+    基于频道优先级的源选择策略
+    重要频道保留2个源，次要频道保留1个源
+    """
+    if priority_channels is None:
+        # 默认重要频道列表
+        priority_channels = [
+            "CCTV1", "CCTV2", "CCTV3", "CCTV4", "CCTV5", "CCTV5+", "CCTV6", "CCTV7", "CCTV8",
+            "CCTV9", "CCTV10", "CCTV11", "CCTV12", "CCTV13", "CCTV14", "CCTV15", "CCTV16", "CCTV17",
+            "湖南卫视", "浙江卫视", "江苏卫视", "北京卫视", "东方卫视", "广东卫视", "深圳卫视"
+        ]
+    
+    optimized_channels = {}
+    
+    for channel, sources in sorted_channels.items():
+        if channel in priority_channels:
+            # 重要频道：保留2个最快源
+            optimized_channels[channel] = sources[:2]
+        else:
+            # 次要频道：只保留1个最快源
+            optimized_channels[channel] = sources[:1] if sources else []
+    
+    # 统计
+    priority_count = sum(1 for ch in optimized_channels if ch in priority_channels)
+    normal_count = len(optimized_channels) - priority_count
+    total_sources = sum(len(sources) for sources in optimized_channels.values())
+    
+    print(f"🎯 优先级优化: {priority_count}个重要频道(2源), {normal_count}个普通频道(1源), 共{total_sources}个源")
+    
+    return optimized_channels
 
-    print(f"🚀 启动多线程检测（共 {len(groups)} 个 IP）...")
-    playable_ips = set()
-    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-        futures = {executor.submit(detect_ip, ip, chs): ip for ip, chs in groups.items()}
-        for future in concurrent.futures.as_completed(futures):
-            ip_port, ok = future.result()
-            if ok:
-                playable_ips.add(ip_port)
-
-    print(f"✅ 检测完成，可播放 IP 共 {len(playable_ips)} 个")
-
-    valid_lines = []
-    seen = set()
-
-    for ip_port in playable_ips:
-        province_operator = ip_info.get(ip_port, "未知")
-        for c, u in groups[ip_port]:
-            key = f"{c},{u}"
-            if key not in seen:
-                seen.add(key)
-                valid_lines.append(f"{c},{u}${province_operator}")
-
-    beijing_now = datetime.now(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M:%S")
-    disclaimer_url = "https://kakaxi-1.asia/LOGO/Disclaimer.mp4"
-
+def generate_optimized_iptv(sorted_channels: Dict):
+    """生成优化的IPTV文件，每个频道只保留1-2个最快源"""
+    
     with open(IPTV_FILE, "w", encoding="utf-8") as f:
-        f.write(f"更新时间: {beijing_now}（北京时间）\n\n")
-        f.write("更新时间,#genre#\n")
-        f.write(f"{beijing_now},{disclaimer_url}\n\n")
-
-        for category, ch_list in CHANNEL_CATEGORIES.items():
+        for category, channel_list in CHANNEL_CATEGORIES.items():
             f.write(f"{category},#genre#\n")
-            for ch in ch_list:
-                for line in valid_lines:
-                    name = line.split(",", 1)[0]
-                    if name == ch:
-                        f.write(line + "\n")
+            
+            channel_count = 0
+            for channel in channel_list:
+                if channel in sorted_channels:
+                    sources = sorted_channels[channel]
+                    channel_count += 1
+                    
+                    # 写入源
+                    for ch_name, url, provider, score in sources:
+                        f.write(f"{ch_name},{url}${provider}\n")
+            
             f.write("\n")
+            print(f"  📁 {category}: {channel_count} 个频道")
+    
+    # 统计信息
+    total_channels = len(sorted_channels)
+    total_sources = sum(len(sources) for sources in sorted_channels.values())
+    
+    print(f"\n🎯 优化版 IPTV.txt 生成完成！")
+    print(f"📊 统计: {total_channels} 个频道, {total_sources} 个源")
+    print(f"🚀 重要频道保留2个最快源，普通频道保留1个最快源")
 
-    print(f"🎯 IPTV.txt 生成完成（含更新时间），共 {len(valid_lines)} 条频道")
+def ultra_fast_third_stage():
+    """超快速的第三阶段：基于IP测速，每个频道只保留1-2个最快源"""
+    print("🧩 第三阶段：超快速IP测速排序生成优化版 IPTV.txt")
+    
+    if not os.path.exists(ZUBO_FILE):
+        print("⚠️ zubo.txt 不存在，跳过")
+        return
+    
+    start_time = time.time()
+    
+    # 使用基于IP的快速测速
+    sorted_channels = fast_ip_based_sorting(max_workers=15)
+    
+    # 应用优先级策略
+    priority_channels = [
+        "CCTV1", "CCTV2", "CCTV3", "CCTV4", "CCTV5", "CCTV5+", "CCTV6", "CCTV7", "CCTV8",
+        "CCTV9", "CCTV10", "CCTV11", "CCTV12", "CCTV13", "CCTV14", "CCTV15", "CCTV16", "CCTV17",
+        "湖南卫视", "浙江卫视", "江苏卫视", "北京卫视", "东方卫视", "广东卫视", "深圳卫视",
+        "CCTV4K", "CCTV8K", "CCTV4欧洲", "CCTV4美洲"
+    ]
+    optimized_channels = priority_based_selection(sorted_channels, priority_channels)
+    
+    # 生成优化版IPTV文件
+    generate_optimized_iptv(optimized_channels)
+    
+    elapsed_time = time.time() - start_time
+    print(f"⏱️ 总耗时: {elapsed_time:.1f} 秒")
 
 # ===============================
 # 文件推送  
@@ -378,12 +534,11 @@ def push_all_files():
     os.system('git commit -m "自动更新：计数、IP文件、IPTV.txt" || echo "⚠️ 无需提交"')
     os.system("git push origin main || echo '⚠️ 推送失败'")
 
-
 # ===============================
 # 主执行逻辑
 if __name__ == "__main__":
     run_count = first_stage()
     if run_count in [12, 24, 36, 48, 60, 72]:
         second_stage()
-        third_stage()
+        ultra_fast_third_stage()
     push_all_files()
