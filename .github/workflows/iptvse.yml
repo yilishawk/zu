@@ -26,7 +26,7 @@ jobs:
 
       - name: 运行 IPTV 抓取 + 过滤
         run: |
-          python iptvse.py
+          python iptv_scraper.py
 
       - name: 提交并推送
         run: |
