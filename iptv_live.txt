@@ -4,6 +4,8 @@
 东方卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E4%B8%9C%E6%96%B9%E5%8D%AB%E8%A7%86&t=1760585411&token=f0b2febef0508ac20723821acaeb085c
 云南卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E4%BA%91%E5%8D%97%E5%8D%AB%E8%A7%86&t=1760585411&token=24326c58bc66011ebeee29505f981204
 人间卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E4%BA%BA%E9%97%B4%E5%8D%AB%E8%A7%86&t=1760585411&token=349ca181afac0a4e6761870ba7ce9342
+四川卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%9B%9B%E5%B7%9D%E5%8D%AB%E8%A7%86&t=1760585411&token=a25b194aea8ec0330074a4025ffb95f7
+大湾区卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%A4%A7%E6%B9%BE%E5%8C%BA%E5%8D%AB%E8%A7%86&t=1760585411&token=c371588448601e2db55be7c3a26b4724
 天津卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%A4%A9%E6%B4%A5%E5%8D%AB%E8%A7%86&t=1760585411&token=aa43cbae48c98840bf5ba8f257bb9b96
 宁夏卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%AE%81%E5%A4%8F%E5%8D%AB%E8%A7%86&t=1760585411&token=46777afd1d339641ee3d9b72106796ae
 安徽卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%AE%89%E5%BE%BD%E5%8D%AB%E8%A7%86&t=1760585411&token=67a313d02f474d9ecdcf34d515b70c08
@@ -15,15 +17,25 @@
 康巴卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%BA%B7%E5%B7%B4%E5%8D%AB%E8%A7%86&t=1760585411&token=ca5a3d21d689b191190f283f47dbfaab
 延边卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%BB%B6%E8%BE%B9%E5%8D%AB%E8%A7%86&t=1760585411&token=6cc2346c995617f4c19f7a65e43a86da
 新疆卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%96%B0%E7%96%86%E5%8D%AB%E8%A7%86&t=1760585411&token=4ae1862d33270f5117c7d71431b29c38
+浙江卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B5%99%E6%B1%9F%E5%8D%AB%E8%A7%86&t=1760585411&token=8d146785241f7cc3cca773a2f7881fcd
+海南卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B5%B7%E5%8D%97%E5%8D%AB%E8%A7%86&t=1760585411&token=fc9c26bbc37e5af7793a65134e169477
+海峡卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B5%B7%E5%B3%A1%E5%8D%AB%E8%A7%86&t=1760585411&token=7d661ff92492e988eb8b6cef1e8ccbdb
 深圳卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B7%B1%E5%9C%B3%E5%8D%AB%E8%A7%86&t=1760585411&token=538edadf5c4b4d5e6e837d981d0cb5e8
 湖北卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B9%96%E5%8C%97%E5%8D%AB%E8%A7%86&t=1760585411&token=76eddfe13eada736839871329aad9dac
+湖南卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B9%96%E5%8D%97%E5%8D%AB%E8%A7%86&t=1760585411&token=63c0683563bf5cdb47b73722260627a5
 甘肃卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E7%94%98%E8%82%83%E5%8D%AB%E8%A7%86&t=1760585411&token=ca23a984380ccb5a5338cb57fec640f5
+黑龙江卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E9%BB%91%E9%BE%99%E6%B1%9F%E5%8D%AB%E8%A7%86&t=1760585411&token=2632b230666c41bb5b8af3046bd61e23
+
+台湾,#genre#
+寰宇新闻台湾台,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%AF%B0%E5%AE%87%E6%96%B0%E9%97%BB%E5%8F%B0%E6%B9%BE%E5%8F%B0&t=1760585411&token=f5fe42880cc7b971fa1a9efa9a1137e1
+民视台湾台,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B0%91%E8%A7%86%E5%8F%B0%E6%B9%BE%E5%8F%B0&t=1760585411&token=c04e0c185bd0c8017716ed15c6fbc1c9
 
 央视,#genre#
 CCTV1,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV1&t=1760585411&token=df1eaa2ae08936d8da14fe1274694f28
 CCTV10,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV10&t=1760585411&token=904dc116f371d163a15a0f3a5bfe48cc
 CCTV11,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV11&t=1760585411&token=821b5631124e90e68b543463dba4e16a
 CCTV12,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV12&t=1760585411&token=59ec7ffad1e9e9e38e9afbc330fbea04
+CCTV13,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV13&t=1760585411&token=cde87db33a1a9c36c65a2f73e3a9ff07
 CCTV14,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV14&t=1760585411&token=80bd93b5d36b1ec98fcd22d9f926ee09
 CCTV15,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV15&t=1760585411&token=09554eaa18bb7938b0a35bcb56022466
 CCTV16,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV16&t=1760585411&token=eb2b75771d80d23c058e0a85107d1183
@@ -33,6 +45,8 @@ CCTV3,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV3&t=1760585411&to
 CCTV4,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV4&t=1760585411&token=30206ac2abdd37a1d4104f2bc86536db
 CCTV4欧洲,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV4%E6%AC%A7%E6%B4%B2&t=1760585411&token=da268c366a4e6adc06b5dc3324870b76
 CCTV4美洲,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV4%E7%BE%8E%E6%B4%B2&t=1760585411&token=11cbe0ca2025e00d706af0bcbbdfffe3
+CCTV5,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV5&t=1760585411&token=11ca3f429dba1df4ad42fb1f50512dfa
+CCTV5+,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV5%2B&t=1760585411&token=4555e6dbb64f42fbc0175bc8069bd14d
 CCTV6,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV6&t=1760585411&token=944b6327597e5ab6e14998beedd01e06
 CCTV7,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV7&t=1760585411&token=ef4566ffc523128175204c2939d3a5b8
 CCTV8,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV8&t=1760585411&token=68364a3ee862acfdd15da4c8d59bac6e
@@ -53,6 +67,8 @@ CCTV9,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV9&t=1760585411&to
 陕西都市青春,https://stream.iptv-search.com/iptv_test/main.php?id=%E9%99%95%E8%A5%BF%E9%83%BD%E5%B8%82%E9%9D%92%E6%98%A5&t=1760585411&token=45f3472545de501b53e65f70d1c97280
 
 香港,#genre#
+HOY76(香港本地IP),https://stream.iptv-search.com/iptv_test/main.php?id=HOY76%28%E9%A6%99%E6%B8%AF%E6%9C%AC%E5%9C%B0IP%29&t=1760585411&token=1ea329b421be329dc2cfc25c40144bad
+HOY77(香港本地IP),https://stream.iptv-search.com/iptv_test/main.php?id=HOY77%28%E9%A6%99%E6%B8%AF%E6%9C%AC%E5%9C%B0IP%29&t=1760585411&token=6d10b043857295692859d11df8cd3ede
 凤凰中文,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%87%A4%E5%87%B0%E4%B8%AD%E6%96%87&t=1760585411&token=a3273800aae6f441f4e2d29b2e5548ea
 凤凰资讯,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%87%A4%E5%87%B0%E8%B5%84%E8%AE%AF&t=1760585411&token=7febd5c752dfb809741498d669ef0cad
 凤凰香港,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%87%A4%E5%87%B0%E9%A6%99%E6%B8%AF&t=1760585411&token=3204f88a14e73924374c42ba4794dc16

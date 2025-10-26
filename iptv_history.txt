@@ -4,6 +4,8 @@
 东方卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E4%B8%9C%E6%96%B9%E5%8D%AB%E8%A7%86&t=1760585411&token=f0b2febef0508ac20723821acaeb085c
 云南卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E4%BA%91%E5%8D%97%E5%8D%AB%E8%A7%86&t=1760585411&token=24326c58bc66011ebeee29505f981204
 人间卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E4%BA%BA%E9%97%B4%E5%8D%AB%E8%A7%86&t=1760585411&token=349ca181afac0a4e6761870ba7ce9342
+四川卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%9B%9B%E5%B7%9D%E5%8D%AB%E8%A7%86&t=1760585411&token=a25b194aea8ec0330074a4025ffb95f7
+大湾区卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%A4%A7%E6%B9%BE%E5%8C%BA%E5%8D%AB%E8%A7%86&t=1760585411&token=c371588448601e2db55be7c3a26b4724
 天津卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%A4%A9%E6%B4%A5%E5%8D%AB%E8%A7%86&t=1760585411&token=aa43cbae48c98840bf5ba8f257bb9b96
 宁夏卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%AE%81%E5%A4%8F%E5%8D%AB%E8%A7%86&t=1760585411&token=46777afd1d339641ee3d9b72106796ae
 安徽卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%AE%89%E5%BE%BD%E5%8D%AB%E8%A7%86&t=1760585411&token=67a313d02f474d9ecdcf34d515b70c08
@@ -15,10 +17,14 @@
 康巴卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%BA%B7%E5%B7%B4%E5%8D%AB%E8%A7%86&t=1760585411&token=ca5a3d21d689b191190f283f47dbfaab
 延边卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%BB%B6%E8%BE%B9%E5%8D%AB%E8%A7%86&t=1760585411&token=6cc2346c995617f4c19f7a65e43a86da
 新疆卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%96%B0%E7%96%86%E5%8D%AB%E8%A7%86&t=1760585411&token=4ae1862d33270f5117c7d71431b29c38
+浙江卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B5%99%E6%B1%9F%E5%8D%AB%E8%A7%86&t=1760585411&token=8d146785241f7cc3cca773a2f7881fcd
+海南卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B5%B7%E5%8D%97%E5%8D%AB%E8%A7%86&t=1760585411&token=fc9c26bbc37e5af7793a65134e169477
+海峡卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B5%B7%E5%B3%A1%E5%8D%AB%E8%A7%86&t=1760585411&token=7d661ff92492e988eb8b6cef1e8ccbdb
 深圳卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B7%B1%E5%9C%B3%E5%8D%AB%E8%A7%86&t=1760585411&token=538edadf5c4b4d5e6e837d981d0cb5e8
 湖北卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B9%96%E5%8C%97%E5%8D%AB%E8%A7%86&t=1760585411&token=76eddfe13eada736839871329aad9dac
 湖南卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B9%96%E5%8D%97%E5%8D%AB%E8%A7%86&t=1760585411&token=63c0683563bf5cdb47b73722260627a5
 甘肃卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E7%94%98%E8%82%83%E5%8D%AB%E8%A7%86&t=1760585411&token=ca23a984380ccb5a5338cb57fec640f5
+黑龙江卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E9%BB%91%E9%BE%99%E6%B1%9F%E5%8D%AB%E8%A7%86&t=1760585411&token=2632b230666c41bb5b8af3046bd61e23
 
 台湾,#genre#
 寰宇新闻台湾台,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%AF%B0%E5%AE%87%E6%96%B0%E9%97%BB%E5%8F%B0%E6%B9%BE%E5%8F%B0&t=1760585411&token=f5fe42880cc7b971fa1a9efa9a1137e1

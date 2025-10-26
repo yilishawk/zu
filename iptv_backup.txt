@@ -46,6 +46,15 @@ CCTV7,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV7&t=1760585411&to
 CCTV8,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV8&t=1760585411&token=68364a3ee862acfdd15da4c8d59bac6e
 CCTV9,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV9&t=1760585411&token=da9c8b1a8c75b3a27e5d2813c00dc7b2
 
+西安,#genre#
+西安丝路,https://stream.iptv-search.com/iptv_test/main.php?id=%E8%A5%BF%E5%AE%89%E4%B8%9D%E8%B7%AF&t=1760585411&token=a272be33c0e01dab880f10994e90a664
+西安乐购购物,https://stream.iptv-search.com/iptv_test/main.php?id=%E8%A5%BF%E5%AE%89%E4%B9%90%E8%B4%AD%E8%B4%AD%E7%89%A9&t=1760585411&token=3d025771587293acb95d5742021552e5
+西安商务资讯,https://stream.iptv-search.com/iptv_test/main.php?id=%E8%A5%BF%E5%AE%89%E5%95%86%E5%8A%A1%E8%B5%84%E8%AE%AF&t=1760585411&token=9da7c3c948be118d815ad937c67a7819
+西安戏剧影视,https://stream.iptv-search.com/iptv_test/main.php?id=%E8%A5%BF%E5%AE%89%E6%88%8F%E5%89%A7%E5%BD%B1%E8%A7%86&t=1760585411&token=8042040db0e8ba6b0bcaf1cb37bda099
+西安新闻综合,https://stream.iptv-search.com/iptv_test/main.php?id=%E8%A5%BF%E5%AE%89%E6%96%B0%E9%97%BB%E7%BB%BC%E5%90%88&t=1760585411&token=6fd6c1c49bb32af50d0691d1a35ad1ca
+西安移动电视,https://stream.iptv-search.com/iptv_test/main.php?id=%E8%A5%BF%E5%AE%89%E7%A7%BB%E5%8A%A8%E7%94%B5%E8%A7%86&t=1760585411&token=1381c4677c98b2f9ca3711fcd9bec33f
+西安都市,https://stream.iptv-search.com/iptv_test/main.php?id=%E8%A5%BF%E5%AE%89%E9%83%BD%E5%B8%82&t=1760585411&token=de458b58b69625f6d02a25a8dadde957
+
 陕西,#genre#
 陕西卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E9%99%95%E8%A5%BF%E5%8D%AB%E8%A7%86&t=1760585411&token=114b928d0b27972d144d67f794b64377
 陕西新闻资讯,https://stream.iptv-search.com/iptv_test/main.php?id=%E9%99%95%E8%A5%BF%E6%96%B0%E9%97%BB%E8%B5%84%E8%AE%AF&t=1760585411&token=6b4b8cbe337f0d5478e1596f87c5bb3f
@@ -54,5 +63,7 @@ CCTV9,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV9&t=1760585411&to
 香港,#genre#
 HOY76(香港本地IP),https://stream.iptv-search.com/iptv_test/main.php?id=HOY76%28%E9%A6%99%E6%B8%AF%E6%9C%AC%E5%9C%B0IP%29&t=1760585411&token=1ea329b421be329dc2cfc25c40144bad
 HOY77(香港本地IP),https://stream.iptv-search.com/iptv_test/main.php?id=HOY77%28%E9%A6%99%E6%B8%AF%E6%9C%AC%E5%9C%B0IP%29&t=1760585411&token=6d10b043857295692859d11df8cd3ede
+凤凰中文,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%87%A4%E5%87%B0%E4%B8%AD%E6%96%87&t=1760585411&token=a3273800aae6f441f4e2d29b2e5548ea
+凤凰资讯,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%87%A4%E5%87%B0%E8%B5%84%E8%AE%AF&t=1760585411&token=7febd5c752dfb809741498d669ef0cad
 凤凰香港,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%87%A4%E5%87%B0%E9%A6%99%E6%B8%AF&t=1760585411&token=3204f88a14e73924374c42ba4794dc16
 
