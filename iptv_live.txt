@@ -83,10 +83,10 @@ CCTV4美洲,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV4%E7%BE%8E%
 CCTV4美洲,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV4%E7%BE%8E%E6%B4%B2&t=1761535820&token=2140836c3c2a000e9a09a3433036344d
 CCTV5,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV5&t=1760585411&token=11ca3f429dba1df4ad42fb1f50512dfa
 CCTV5+,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV5%2B&t=1760585411&token=4555e6dbb64f42fbc0175bc8069bd14d
+CCTV5+,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV5%2B&t=1761535820&token=1068ffa1f3358f61e459371cf58b58a5
 CCTV6,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV6&t=1760585411&token=944b6327597e5ab6e14998beedd01e06
 CCTV6,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV6&t=1761535820&token=10852e5c8b08d932cbd92ac20cf3f405
 CCTV7,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV7&t=1760585411&token=ef4566ffc523128175204c2939d3a5b8
-CCTV7,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV7&t=1761535820&token=cbef6346ddc87a01b65070120d59175e
 CCTV8,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV8&t=1760585411&token=68364a3ee862acfdd15da4c8d59bac6e
 CCTV8,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV8&t=1761535820&token=3a0617f3d0b8e132cb735ac914207e93
 CCTV9,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV9&t=1760585411&token=da9c8b1a8c75b3a27e5d2813c00dc7b2
@@ -113,6 +113,9 @@ CCTV9,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV9&t=1761535820&to
 HOY76(香港本地IP),https://stream.iptv-search.com/iptv_test/main.php?id=HOY76%28%E9%A6%99%E6%B8%AF%E6%9C%AC%E5%9C%B0IP%29&t=1760585411&token=1ea329b421be329dc2cfc25c40144bad
 HOY77(香港本地IP),https://stream.iptv-search.com/iptv_test/main.php?id=HOY77%28%E9%A6%99%E6%B8%AF%E6%9C%AC%E5%9C%B0IP%29&t=1760585411&token=6d10b043857295692859d11df8cd3ede
 凤凰中文,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%87%A4%E5%87%B0%E4%B8%AD%E6%96%87&t=1760585411&token=a3273800aae6f441f4e2d29b2e5548ea
+凤凰中文,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%87%A4%E5%87%B0%E4%B8%AD%E6%96%87&t=1761535820&token=345bb49529ed51a0d9ef822b3653ca3d
 凤凰资讯,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%87%A4%E5%87%B0%E8%B5%84%E8%AE%AF&t=1760585411&token=7febd5c752dfb809741498d669ef0cad
+凤凰资讯,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%87%A4%E5%87%B0%E8%B5%84%E8%AE%AF&t=1761535820&token=5fbf05044e2b730b81617889dfb00535
 凤凰香港,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%87%A4%E5%87%B0%E9%A6%99%E6%B8%AF&t=1760585411&token=3204f88a14e73924374c42ba4794dc16
+凤凰香港,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%87%A4%E5%87%B0%E9%A6%99%E6%B8%AF&t=1761535820&token=8ed845e19fdc4757cf58b9873744337d
 

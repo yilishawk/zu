@@ -5,7 +5,9 @@
 东南卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E4%B8%9C%E5%8D%97%E5%8D%AB%E8%A7%86&t=1761535820&token=26ff2c00522c9a8a1e583e446ff09f97
 东方卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E4%B8%9C%E6%96%B9%E5%8D%AB%E8%A7%86&t=1760585411&token=f0b2febef0508ac20723821acaeb085c
 云南卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E4%BA%91%E5%8D%97%E5%8D%AB%E8%A7%86&t=1760585411&token=24326c58bc66011ebeee29505f981204
+云南卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E4%BA%91%E5%8D%97%E5%8D%AB%E8%A7%86&t=1761535820&token=2f789a9afdca639288d72fc9bf53581f
 人间卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E4%BA%BA%E9%97%B4%E5%8D%AB%E8%A7%86&t=1760585411&token=349ca181afac0a4e6761870ba7ce9342
+人间卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E4%BA%BA%E9%97%B4%E5%8D%AB%E8%A7%86&t=1761535820&token=a0ae41b51e6d8700b20d895d1a299c0c
 四川卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%9B%9B%E5%B7%9D%E5%8D%AB%E8%A7%86&t=1760585411&token=a25b194aea8ec0330074a4025ffb95f7
 大湾区卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%A4%A7%E6%B9%BE%E5%8C%BA%E5%8D%AB%E8%A7%86&t=1760585411&token=c371588448601e2db55be7c3a26b4724
 大湾区卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%A4%A7%E6%B9%BE%E5%8C%BA%E5%8D%AB%E8%A7%86&t=1761535820&token=a5e53892618973a5d7ce2810e9caf644
@@ -24,8 +26,11 @@
 山西卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%B1%B1%E8%A5%BF%E5%8D%AB%E8%A7%86&t=1761535820&token=01ca94ef1b71496012f0ca2c98db5e59
 广东卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%B9%BF%E4%B8%9C%E5%8D%AB%E8%A7%86&t=1760585411&token=ddff613b7b5eb28d40acab9fe5a9840d
 广西卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%B9%BF%E8%A5%BF%E5%8D%AB%E8%A7%86&t=1760585411&token=c17f841f0f8ebd14e3662f03d23f5123
+广西卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%B9%BF%E8%A5%BF%E5%8D%AB%E8%A7%86&t=1761535820&token=9ee15872782c8398f0f399559de43bbf
 康巴卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%BA%B7%E5%B7%B4%E5%8D%AB%E8%A7%86&t=1760585411&token=ca5a3d21d689b191190f283f47dbfaab
+康巴卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%BA%B7%E5%B7%B4%E5%8D%AB%E8%A7%86&t=1761535820&token=f00a8d8e24b3580cbe9bf50b72b9ad52
 延边卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%BB%B6%E8%BE%B9%E5%8D%AB%E8%A7%86&t=1760585411&token=6cc2346c995617f4c19f7a65e43a86da
+延边卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%BB%B6%E8%BE%B9%E5%8D%AB%E8%A7%86&t=1761535820&token=13c917783ccfee9dd59984721cac8bd2
 新疆卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%96%B0%E7%96%86%E5%8D%AB%E8%A7%86&t=1760585411&token=4ae1862d33270f5117c7d71431b29c38
 河北卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B2%B3%E5%8C%97%E5%8D%AB%E8%A7%86&t=1761535820&token=a7e757c6b763ccb728a9cea4d826982a
 河南卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B2%B3%E5%8D%97%E5%8D%AB%E8%A7%86&t=1761535820&token=3c2d18085632c19d78fcb7455d536370
@@ -45,10 +50,13 @@
 青海卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E9%9D%92%E6%B5%B7%E5%8D%AB%E8%A7%86&t=1761535820&token=6297c7f03afa982e94ea4727cdbbf379
 青海安多卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E9%9D%92%E6%B5%B7%E5%AE%89%E5%A4%9A%E5%8D%AB%E8%A7%86&t=1761535820&token=0f24f689a11c1075f079020512c12954
 黑龙江卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E9%BB%91%E9%BE%99%E6%B1%9F%E5%8D%AB%E8%A7%86&t=1760585411&token=2632b230666c41bb5b8af3046bd61e23
+黑龙江卫视,https://stream.iptv-search.com/iptv_test/main.php?id=%E9%BB%91%E9%BE%99%E6%B1%9F%E5%8D%AB%E8%A7%86&t=1761535820&token=1a252f4c13d7619b73d93ee35585c139
 
 台湾,#genre#
 寰宇新闻台湾台,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%AF%B0%E5%AE%87%E6%96%B0%E9%97%BB%E5%8F%B0%E6%B9%BE%E5%8F%B0&t=1760585411&token=f5fe42880cc7b971fa1a9efa9a1137e1
+寰宇新闻台湾台,https://stream.iptv-search.com/iptv_test/main.php?id=%E5%AF%B0%E5%AE%87%E6%96%B0%E9%97%BB%E5%8F%B0%E6%B9%BE%E5%8F%B0&t=1761535820&token=a2cd899eee087a2bb481c3b3e1326f8f
 民视台湾台,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B0%91%E8%A7%86%E5%8F%B0%E6%B9%BE%E5%8F%B0&t=1760585411&token=c04e0c185bd0c8017716ed15c6fbc1c9
+民视台湾台,https://stream.iptv-search.com/iptv_test/main.php?id=%E6%B0%91%E8%A7%86%E5%8F%B0%E6%B9%BE%E5%8F%B0&t=1761535820&token=6e27e2cc0ff06aa96e3e0011cbdac991
 
 央视,#genre#
 CCTV1,https://stream.iptv-search.com/iptv_test/main.php?id=CCTV1&t=1760585411&token=df1eaa2ae08936d8da14fe1274694f28
