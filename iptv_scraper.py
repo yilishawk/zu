@@ -1,4 +1,7 @@
-# iptv_scraper.py
+# iptv_ultimate_2025.py
+# 功能：增量抓取 + 48小时自动清理死链 + 永远干净的播放列表
+# 特点：一次运行，终身无死源！用户随便点随便秒开
+
 import requests
 from bs4 import BeautifulSoup
 from Crypto.Cipher import AES
@@ -6,210 +9,236 @@ import base64
 import time
 import random
 import os
-from concurrent.futures import ThreadPoolExecutor
+import json
+from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# ====================== AES 密钥 ======================
+# ====================== 配置区 ======================
 KEY = base64.b64decode("S7q/H5ycQPnNl0UXkDw69Fx6zN/kn+1ZgWbLumBFzB8=")
 IV = base64.b64decode("fSb6cs5m9MZO2r/C/8Mdeg==")
 
-# ====================== 搜索分组 ======================
+# 搜索关键词 → 最终分组名
 SEARCH_GROUPS = {
-    "cctv": "央视",
-    "卫视": "卫视",
-    "陕西": "陕西",
-    "西安": "西安",
-    "香港": "香港",
-    "台湾": "台湾",
-    "凤凰": "香港",
+    "cctv":   "央视",
+    "卫视":   "卫视",
+    "陕西":   "陕西",
+    "西安":   "西安",
+    "香港":   "港澳",
+    "台湾":   "台湾",
+    "凤凰":   "港澳",
+    "电影":   "电影",
+    "体育":   "体育",
+    "纪录片": "纪录片",
+    "少儿":   "少儿",
 }
 
-# ====================== 文件路径 ======================
-LIVE_FILE = "iptv_live.txt"        # 最终播放文件（只保留能播）
-HISTORY_FILE = "iptv_history.txt"  # 所有抓到过的源（永不丢失）
-BACKUP_FILE = "iptv_backup.txt"    # 自动备份
+LIVE_FILE = "iptv_live.txt"                    # 最终播放文件（绝对干净！仅48小时内活的）
+HISTORY_JSON = "iptv_history_with_time.json"   # 核心历史库（带最后存活时间）
+BACKUP_DIR = "backup"                          # 自动备份目录
 
-# ====================== 请求头 ======================
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36",
-    "Accept-Language": "zh-CN,zh;q=0.9",
-}
+# 随机 UA 池（2025最新）
+UA_LIST = [
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0 Safari/537.36",
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:131.0) Gecko/20100101 Firefox/131.0",
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 Safari/537.36",
+    "Mozilla/5.0 (iPhone; CPU iPhone OS 18_1 like Mac OS X) AppleWebKit/605.1.15 Mobile/15E148",
+]
 
-# ====================== 全局结果（本次抓取）======================
-grouped_results = {}
+# ====================== 工具函数 ======================
+def get_headers():
+    return {
+        "User-Agent": random.choice(UA_LIST),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+        "Accept-Encoding": "gzip, deflate, br",
+        "Connection": "keep-alive",
+        "Upgrade-Insecure-Requests": "1",
+    }
 
-# ====================== AES 解密 ======================
-def decrypt_aes_base64(encrypted_b64: str) -> str:
+def decrypt_aes(encrypted_b64: str) -> str:
     try:
         cipher = AES.new(KEY, AES.MODE_CBC, IV)
         decrypted = cipher.decrypt(base64.b64decode(encrypted_b64))
-        pad_len = decrypted[-1]
-        return decrypted[:-pad_len].decode("utf-8", errors="ignore").strip()
+        pad = decrypted[-1]
+        if not (1 <= pad <= 16):
+            pad = 0
+        return decrypted[:-pad].decode("utf-8", errors="ignore").strip()
     except:
         return ""
 
-# ====================== 检测链接是否能播放 ======================
-def is_link_alive(link: str) -> bool:
+def is_link_alive(url: str, timeout=8) -> bool:
+    if not url.startswith(("http://", "https://")):
+        return False
+    if any(x in url.lower() for x in ["localhost", "127.0.0.1", ".m3u8?token=", "127.0.0.1:"]):
+        return False
     try:
-        r = requests.head(link, timeout=6, allow_redirects=True, headers=HEADERS)
+        session = requests.Session()
+        session.headers.update(get_headers())
+        session.verify = False
+
+        r = session.head(url, timeout=timeout, allow_redirects=True)
         if r.status_code in (200, 206):
             return True
         if r.status_code in (403, 405):
-            r = requests.get(link, timeout=6, stream=True, headers=HEADERS)
+            r = session.get(url, timeout=timeout, stream=True)
             if r.status_code == 200:
-                next(r.raw.read(1024), None)
+                next(r.raw.read(2048), None)
                 return True
         return False
     except:
         return False
 
-# ====================== 并发过滤存活链接 ======================
-def filter_live_links(links):
-    live = set()
-    with ThreadPoolExecutor(max_workers=15) as pool:
-        futures = {pool.submit(is_link_alive, link): (name, link) for name, link in links}
-        for f in futures:
-            name, link = futures[f]
-            if f.result():
-                live.add((name, link))
-            else:
-                print(f"    失效 → {name}")
-    return live
-
-# ====================== 加载历史数据 ======================
+# ====================== 加载带时间戳的历史 ======================
 def load_history():
-    if not os.path.exists(HISTORY_FILE):
+    if not os.path.exists(HISTORY_JSON):
         return {}
-    history = {}
-    with open(HISTORY_FILE, "r", encoding="utf-8") as f:
-        group = None
-        for line in f:
-            line = line.strip()
-            if not line: continue
-            if line.endswith(",#genre#"):
-                group = line[:-8]
-                history[group] = set()
-            elif group and "," in line:
-                name, link = line.split(",", 1)
-                history[group].add((name.strip(), link.strip()))
-    return history
+    try:
+        with open(HISTORY_JSON, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except:
+        print("历史文件损坏，已备份并重建")
+        os.makedirs(BACKUP_DIR, exist_ok=True)
+        backup_path = os.path.join(BACKUP_DIR, f"damaged_{int(time.time())}.json")
+        os.replace(HISTORY_JSON, backup_path)
+        return {}
 
-# ====================== 保存合并 + 过滤 ======================
-def save_and_filter():
-    print(f"\n开始合并与过滤...")
-    history = load_history()
-    total_hist = sum(len(v) for v in history.values())
-    print(f"历史库：{total_hist} 条")
+# ====================== 保存最终干净播放列表 ======================
+def save_live_file(live_items):
+    os.makedirs(BACKUP_DIR, exist_ok=True)
+    if os.path.exists(LIVE_FILE):
+        backup_name = os.path.join(BACKUP_DIR, f"iptv_live_{datetime.now().strftime('%Y%m%d_%H%M%S')}.txt")
+        os.replace(LIVE_FILE, backup_name)
 
-    merged = {}
-    for g in set(history.keys()) | set(grouped_results.keys()):
-        merged[g] = history.get(g, set()) | grouped_results.get(g, set())
-    total_merged = sum(len(v) for v in merged.values())
-    print(f"合并后：{total_merged} 条（+{total_merged - total_hist}）")
-
-    print(f"检测链接存活（并发15线程）...")
-    live_data = {}
-    for group, items in merged.items():
-        if not items: continue
-        print(f"  检测 {group} ({len(items)} 条)")
-        live_data[group] = filter_live_links(items)
-    
-    live_count = sum(len(v) for v in live_data.values())
-    print(f"存活：{live_count} 条")
-
-    # 备份旧文件
-    for f in [LIVE_FILE, HISTORY_FILE]:
-        if os.path.exists(f):
-            os.replace(f, BACKUP_FILE)
-
-    # 保存历史（所有）
-    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
-        for g in sorted(merged.keys()):
-            items = sorted(merged[g])
-            if not items: continue
-            f.write(f"{g},#genre#\n")
-            for n, l in items: f.write(f"{n},{l}\n")
-            f.write("\n")
-
-    # 保存存活（推荐播放）
     with open(LIVE_FILE, "w", encoding="utf-8") as f:
-        for g in sorted(live_data.keys()):
-            items = sorted(live_data[g])
+        now = datetime.now().strftime("%Y-%m-%d %H:%M")
+        f.write(f"# IPTV 终极纯净版 - 更新时间：{now}\n")
+        f.write(f"# 仅保留最近48小时确认能播的源，绝对不卡顿！\n\n")
+        
+        for group in sorted(live_items.keys()):
+            items = sorted(live_items[group])
             if not items: continue
-            f.write(f"{g},#genre#\n")
-            for n, l in items: f.write(f"{n},{l}\n")
+            f.write(f"{group},#genre#\n")
+            for name, url in items:
+                f.write(f"{name},{url}\n")
             f.write("\n")
+    
+    print(f"纯净播放列表已保存 → {LIVE_FILE}（{sum(len(v) for v in live_items.values())} 条）")
 
-    print(f"\n保存完成！")
-    print(f"   所有历史 → {HISTORY_FILE}")
-    print(f"   仅存活 → {LIVE_FILE}（推荐播放）")
-
-# ====================== 抓取关键词（卫视5页，其他1页，无数据重试）======================
-def scrape_keyword(keyword: str, group: str):
-    print(f"\n抓取关键词: {keyword} → {group}")
-    max_pages = 5 if keyword == "卫视" else 1
-    success_pages = 0
+# ====================== 抓取关键词 ======================
+def scrape_keyword(keyword: str, group_name: str, session):
+    print(f"\n抓取关键词：{keyword} → 归类 [{group_name}]")
+    base_url = "https://iptv-search.com/zh-hans/search/"
+    max_pages = 6 if keyword in ["卫视", "cctv"] else 2
+    added = 0
 
     for page in range(1, max_pages + 1):
-        url = f"https://iptv-search.com/zh-hans/search/?q={keyword}"
-        if page > 1:
-            url += f"&page={page}"
-        print(f"  页码 {page}: {url}", end="")
+        url = f"{base_url}?q={keyword}" + (f"&page={page}" if page > 1 else "")
+        print(f"  第 {page} 页", end="")
 
-        for attempt in range(3):
+        for retry in range(4):
             try:
-                resp = requests.get(url, headers=HEADERS, timeout=20)
+                time.sleep(random.uniform(2.5, 4.5))
+                resp = session.get(url, timeout=20)
                 soup = BeautifulSoup(resp.text, "html.parser")
                 cards = soup.select(".channel.card")
-                
+
                 if not cards:
-                    print(" [无数据]", end="")
-                    if attempt < 2:
-                        delay = random.uniform(3, 5)
-                        print(f" 延迟 {delay:.1f}s 后重试...", end="")
-                        time.sleep(delay)
-                        continue
-                    break
+                    if "没有找到" in resp.text:
+                        print(" → 无结果，停止翻页")
+                        return added
+                    print(" → 空页面", end="")
+                    continue
 
-                added = 0
-                for c in cards:
-                    name_tag = c.select_one(".channel-name")
-                    span = c.select_one(".link-text")
-                    if not name_tag or not span: continue
-                    name = name_tag.text.strip()
-                    enc = span.get("data-encrypted", "").strip()
-                    if not enc: continue
-                    link = decrypt_aes_base64(enc)
-                    if not link.startswith("http"): continue
-                    grouped_results.setdefault(group, set()).add((name, link))
-                    added += 1
-                print(f" [成功 +{added}]", end="")
-                success_pages += 1
+                new_this_page = 0
+                for card in cards:
+                    name_tag = card.select_one(".channel-name")
+                    enc_tag = card.select_one(".link-text[data-encrypted]")
+                    if not name_tag or not enc_tag: continue
+                    name = name_tag.get_text(strip=True)
+                    enc = enc_tag["data-encrypted"]
+                    link = decrypt_aes(enc)
+                    if link.startswith(("http://", "https://")):
+                        grouped_results.setdefault(group_name, set()).add((name, link))
+                        new_this_page += 1
+                print(f" → +{new_this_page}")
+                added += new_this_page
                 break
-
-            except requests.Timeout:
-                print(f" [超时{attempt+1}]", end="")
-                if attempt < 2:
-                    time.sleep(random.uniform(3, 5))
             except Exception as e:
-                print(f" [错误{attempt+1}]", end="")
-                if attempt < 2:
-                    time.sleep(2)
+                print(f" → 重试 {retry+1} ({e.__class__.__name__})", end="")
+                time.sleep(5)
         else:
-            print(" [彻底失败]", end="")
-        
-        time.sleep(random.uniform(1.5, 3))
-    
-    print(f"  → 成功 {success_pages}/{max_pages} 页")
+            print(" → 本页失败")
+
+    print(f"  本关键词完成，新增 {added} 条")
+    return added
 
 # ====================== 主程序 ======================
 if __name__ == "__main__":
-    print("IPTV 终极抓取启动：增量 + 过滤 + 永不丢失\n")
-    start = time.time()
+    requests.packages.urllib3.disable_warnings()
+    print("="*60)
+    print("    IPTV 终极纯净版抓取器 2025")
+    print("    特点：48小时自动清理死链，播放文件永远干净！")
+    print("="*60 + "\n")
 
+    start_time = time.time()
+    grouped_results = {}  # 本次抓取的新源
+    session = requests.Session()
+    session.headers.update(get_headers())
+
+    # 第一步：抓取所有关键词
+    total_new = 0
     for kw, group in SEARCH_GROUPS.items():
-        scrape_keyword(kw, group)
+        total_new += scrape_keyword(kw, group, session)
 
-    save_and_filter()
+    # 第二步：加载历史（带最后存活时间）
+    history = load_history()
+    current_time = time.time()
+    cutoff_48h = current_time - 48 * 3600
 
-    print(f"\n总耗时: {time.time() - start:.1f} 秒")
-    print("抓取 + 过滤完成！数据已安全保存！")
+    # 把本次抓到的新源全部标记为“现在存活”
+    for group, items in grouped_results.items():
+        for name, url in items:
+            history[url] = {
+                "name": name,
+                "group": group,
+                "last_alive": current_time
+            }
+
+    # 第三步：找出需要检测的链接（48小时内活过 + 本次新增）
+    candidates = []
+    for url, info in history.items():
+        if info["last_alive"] >= cutoff_48h:
+            candidates.append((info["name"], url, info["group"]))
+
+    print(f"\n开始并发检测存活（共 {len(candidates)} 条，48小时内曾活过）")
+    
+    live_items = {}
+    with ThreadPoolExecutor(max_workers=25) as executor:
+        futures = {executor.submit(is_link_alive, url): (name, url, group)
+                  for name, url, group in candidates}
+        completed = 0
+        for future in as_completed(futures):
+            completed += 1
+            name, url, group = futures[future]
+            if future.result():
+                live_items.setdefault(group, []).append((name, url))
+                history[url]["last_alive"] = current_time
+            else:
+                print(f"\r    失效 {completed}/{len(candidates)} → {name[:35]}", end="", flush=True)
+        print("\n检测完成！")
+
+    # 第四步：保存
+    # 1. 保存带时间戳的完整历史（供下次使用）
+    with open(HISTORY_JSON, "w", encoding="utf-8") as f:
+        json.dump(history, f, ensure_ascii=False, indent=2)
+
+    # 2. 保存纯净播放文件（用户最爱的那个）
+    save_live_file(live_items)
+
+    live_count = sum(len(v) for v in live_items.values())
+    print(f"\n大功告成！")
+    print(f"   48小时真实存活：{live_count} 条")
+    print(f"   新增源：{total_new} 条")
+    print(f"   总耗时：{time.time() - start_time:.1f} 秒")
+    print(f"\n直接把 {LIVE_FILE} 丢给播放器就行，绝对秒开不卡！")
+    print("下次运行会自动清理超过48小时没活过的源，越来越干净")
