@@ -13,8 +13,8 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 
 # ==================== 配置 ====================
-KEY = base64.b64decode("S7q/H5ycQPnNl0UXkDw69Fx6zN/kn+1ZgWbLumBFzB8=")
-IV  = base64.b64decode("fSb6cs5m9MZO2r/C/8Mdeg==")
+KEY = base64.b64decode("somImnIVIyP2xZZyKSdubj8TVTloE3hPSFel96gPBdA=")
+IV  = base64.b64decode("73eldRow/R2GxGqOn+rfVg==")
 
 SEARCH_GROUPS = {
     "cctv": "央视",
