@@ -1,43 +1,36 @@
+# .github/workflows/update-tv.yml
 name: 更新直播源 tv.txt
 
 on:
   schedule:
-    - cron: '30 0 * * *'      # 每天北京时间 8:30 自动更新
-  workflow_dispatch:         # 支持手动点击运行
-  push:
-    branches: [ main ]
+    - cron: '30 0 * * *'
+  workflow_dispatch:
+
+# 关键：强制给 workflow 写权限
+permissions:
+  contents: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-      - name: 检出代码
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: 安装 Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      # 关键一步：安装 requests
-      - name: 安装依赖
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
+      - run: pip install requests
 
-      # 运行你的脚本
       - name: 生成 tv.txt
         run: python tv.py
 
-      # 提交更新（只在有变化时提交）
-      - name: 提交并推送（如果有变化）
+      - name: 提交并推送
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add tv.txt
-          if git diff --staged --quiet; then
-            echo "无变化，跳过提交"
-          else
-            git commit -m "Auto update tv.txt $(date -u '+%Y-%m-%d %H:%M')"
+          git diff --staged --quiet || (
+            git commit -m "Auto update tv.txt $(date -u '+%Y-%m-%d %H:%M')" &&
             git push
-          fi
+          )
