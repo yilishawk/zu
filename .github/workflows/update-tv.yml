@@ -1,0 +1,35 @@
+# .github/workflows/update-tv.yml
+name: 更新直播源
+
+on:
+  schedule:
+    - cron: '30 0 * * *'    # 每天 UTC 0:30（北京 8:30）
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run crawler
+        run: |
+          python tv.py
+
+      - name: Commit & Push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions@github.com"
+          git add tv.txt
+          if git diff --cached --quiet; then
+            echo "无变化"
+          else
+            git commit -m "Auto update tv.txt $(date -u '+%Y-%m-%d %H:%M')"
+            git push
