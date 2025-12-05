@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-完全零依赖版（连 opencc 都不用）
-完美支持繁体 + 所有经典排序 + 凤凰前置 + 台湾关键词前置 + 按省份归类
-已在 GitHub Actions 纯净环境测试通过
+最终版：央视/卫视/香港/台灣 100% 保留你最初代码逻辑
+仅将「中国大陆」组中非央视、非卫视的频道按省份重新归类
 """
 
 import re
@@ -14,187 +13,222 @@ URL = "https://freetv.fun/test_channels_new.txt"
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
 BLACKLIST = {"https://stream1.freetv.fun/tang-he-yi-tao-1.m3u8"}
 
-# 简单的繁→简映射（只放最常用的电视台会出现的字）
-SIMPLE_REPLACE = {
-    "臺": "台", "衛": "卫", "視": "视", "頻": "频", "廣": "广", "東": "东",
-    "寶": "宝", "鳳": "凤", "凰": "凰", "資": "资", "訊": "讯", "綜": "综",
-    "藝": "艺", "劇": "剧", "無線": "无线", "翡翠": "翡翠", "明珠": "明珠",
-    "電視": "电视", "緯來": "纬来", "華視": "华视", "龍華": "龙华",
-}
-
-def ts(text):
-    """超轻量繁→简"""
-    for trad, simp in SIMPLE_REPLACE.items():
-        text = text.replace(trad, simp)
-    return text.strip()
-
-# 省份关键词（繁简都写上，稳）
-PROVINCE_KEYWORDS = {
-    "北京": ["北京"],
-    "上海": ["上海"],
-    "广东": ["广东","廣東","广州","廣州","深圳","东莞","東莞","佛山","珠海","惠州","中山","江门","汕头","湛江","茂名","肇庆","揭阳","潮州","汕尾"],
-    "浙江": ["浙江","杭州","宁波","寧波","温州","溫州","嘉兴","紹興","金华","台州"],
-    "江苏": ["江苏","江蘇","南京","苏州","蘇州","无锡","無錫","常州","南通","扬州","鎮江","泰州","盐城"],
-    "山东": ["山东","山東","济南","濟南","青岛","青島","烟台","濰坊","淄博","济宁"],
-    "四川": ["四川","成都","绵阳","綿陽","德阳","南充","乐山"],
-    "陕西": ["陕西","陝西","西安","咸阳","寶雞","渭南"],
-    "湖北": ["湖北","武汉","武漢","宜昌","襄阳","荊州"],
-    "湖南": ["湖南","长沙","長沙","株洲","湘潭","岳阳","常德","衡阳"],
-    "河南": ["河南","郑州","鄭州","洛阳","開封","新乡"],
-    "福建": ["福建","福州","厦门","廈門","泉州","漳州"],
-    "安徽": ["安徽","合肥","芜湖","馬鞍山"],
-    "江西": ["江西","南昌","赣州","九江","上饒"],
-    "河北": ["河北","石家庄","唐山","邯鄲"],
-    "黑龙江": ["黑龙江","黑龍江","哈尔滨","哈爾濱","齐齐哈尔","大慶"],
-    "辽宁": ["辽宁","遼寧","沈阳","瀋陽","大连"],
-    "广西": ["广西","廣西","南宁","南寧","柳州","桂林"],
-    "云南": ["云南","雲南","昆明","大理"],
-    "重庆": ["重庆","重慶"],
-    "天津": ["天津"],
-}
-PROVINCE_ORDER = ["北京","上海","广东","浙江","江苏","湖南","山东","四川","陕西","湖北","河南","福建","安徽","江西","河北","黑龙江","辽宁","广西","云南","重庆","天津"]
+# 简繁快速转换（足够用，不依赖 opencc）
+def ts(t):
+    rep = {
+        "臺":"台","衛":"卫","視":"视","頻":"频","廣":"广","東":"东",
+        "鳳":"凤","凰":"凰","資":"资","訊":"讯","綜":"综","藝":"艺",
+        "劇":"剧","無線":"无线","翡翠":"翡翠","緯來":"纬来"
+    }
+    for a,b in rep.items(): t = t.replace(a,b)
+    return t.strip()
 
 class LiveStreamCrawler:
     def __init__(self):
-        self.parsed = defaultdict(list)
-        self.final = OrderedDict()
-        self.used = set()
-        self.run()
+        self.rawContent = ""
+        self.parsedData = defaultdict(list)
+        self.finalGroups = OrderedDict()
 
-    def run(self):
-        self.fetch_and_parse()
-        self.process_cctv()
-        self.process_weishi()
-        self.process_hongkong()
-        self.process_taiwan()
-        self.process_province()
-        self.output()
+        self.fetchData()
+        self.parseData()
 
-    def fetch_and_parse(self):
+        # 下面这四行是你最初的代码，完全不动！
+        self.processCCTVChannels()
+        self.processMainlandChina()   # 只提取卫视
+        self.processHongKong()
+        self.processTaiwan()
+
+        # 新增：把中国大陆剩下的频道按省份归类
+        self.processProvinceFromMainland()
+
+        self.outputResult()
+
+    # ==================== 你最初的代码，原样保留 ====================
+    def fetchData(self):
         r = requests.get(URL, headers=HEADERS, timeout=30)
         r.raise_for_status()
-        group = ""
-        for line in r.text.splitlines():
+        self.rawContent = r.text
+
+    def parseData(self):
+        currentGroup = ""
+        for line in self.rawContent.splitlines():
             line = line.strip()
             if not line: continue
             if "#genre#" in line:
-                group = line.strip()
+                currentGroup = line.strip()
+                self.parsedData[currentGroup] = []
                 continue
-            if "," not in line: continue
-            title, url = [x.strip() for x in line.split(",", 1)]
-            if url in BLACKLIST: continue
-            self.parsed[group].append({"raw": title, "url": url})
+            if currentGroup and "," in line:
+                title, url = line.split(",", 1)
+                title = title.strip()
+                url = url.strip()
+                if url in BLACKLIST: continue
+                self.parsedData[currentGroup].append({
+                    "title": title,
+                    "url": url,
+                    "original_title": title
+                })
 
-    def clean(self, t):
-        c = re.sub(r'[\(（【\［].*?[\)）】\］]|\s*[\(#]?\d*|backup|備用|备[用\d]*|HD|ＨＤ|4K|8K', '', t, flags=re.I)
-        return ts(c)
+    def cleanTitle(self, title):
+        patterns = [
+            r'\s*\(backup\)', r'\s*\(h265\)', r'\s*\(h264\)',
+            r'\s*\(备用\)', r'\s*\(备\)', r'\s*\[.*?\]', r'\s*#\d+'
+        ]
+        for p in patterns:
+            title = re.sub(p, '', title, flags=re.I)
+        return ts(title).strip()
 
-    # 央视经典排序
-    def process_cctv(self):
-        cctv = {}
-        for chans in self.parsed.values():
-            for ch in chans:
-                c = self.clean(ch["raw"])
-                if not c.startswith("CCTV"): continue
-                key = f"{c}|{ch['url']}"
-                if key in cctv: continue
-                w = self.cctv_weight(c)
-                cctv[key] = {"title": c, "url": ch["url"], "w": w}
-        lst = sorted(cctv.values(), key=lambda x: (x["w"], x["title"]))
-        items = [{"title":i["title"], "url":i["url"]} for i in lst]
-        if items:
-            self.final["央视,#genre#"] = items
-            self.used.update(i["title"] for i in items)
-
-    def cctv_weight(self, t):
-        m = re.match(r"CCTV[-\s]?(\d+)", t, re.I)
+    def getCCTVWeight(self, title):
+        cleanTitle = self.cleanTitle(title)
+        m = re.match(r'^CCTV[-\s]?(\d+)', cleanTitle, re.I)
         if m: return int(m.group(1))
-        if re.search(r"8K|4K", t): return 0
-        special = {"纪录":90,"紀錄":90,"戏曲":91,"戲曲":91,"第一剧场":92,"第一劇場":92,"风云足球":93,"風雲足球":93}
-        for k in special:
-            if k in t: return special[k]
-        return 999
+        special = {
+            "CCTV 8K":100, "CCTV-Documentary":101, "CCTV-戲曲":102,
+            "CCTV第一劇場":103, "CCTV風雲足球":104, "CCTV第一剧场":103, "CCTV风云足球":104,
+        }
+        for k,v in special.items():
+            if cleanTitle.startswith(k): return v
+        if cleanTitle.startswith("CCTV"): return 999
+        return 1000
 
-    # 卫视
-    def process_weishi(self):
-        ws = []
-        for ch in self.parsed.get("中國大陸,#genre#", []) + self.parsed.get("中国大陆,#genre#", []):
-            c = self.clean(ch["raw"])
-            if ("卫视" in c or "衛視" in c) and c not in self.used:
-                ws.append({"title": c, "url": ch["url"]})
-                self.used.add(c)
-        if ws: self.final["卫视,#genre#"] = ws
+    def processCCTVChannels(self):
+        allCCTV = {}
+        for channels in self.parsedData.values():
+            for ch in channels:
+                clean = self.cleanTitle(ch["title"])
+                if clean.startswith("CCTV"):
+                    key = f"{clean}|{ch['url']}"
+                    if key not in allCCTV:
+                        weight = self.getCCTVWeight(ch["title"])
+                        allCCTV[key] = {"title": clean, "url": ch["url"], "weight": weight}
+        cctv_list = sorted(allCCTV.values(), key=lambda x: (x["weight"], x["title"]))
+        if cctv_list:
+            self.finalGroups["央视,#genre#"] = [{"title": c["title"], "url": c["url"]} for c in cctv_list]
 
-    # 香港：凤凰前置
-    def process_hongkong(self):
+    def processMainlandChina(self):
+        key = "中國大陸,#genre#"
+        if key not in self.parsedData: return
+        channels = self.parsedData[key]
+        satelliteGroup = []
+        cctv_titles = {c["title"] for c in self.finalGroups.get("央视,#genre#", [])}
+        for ch in channels:
+            clean = self.cleanTitle(ch["title"])
+            if clean in cctv_titles: continue
+            if "衛視" in clean or "卫视" in clean:
+                satelliteGroup.append({"title": clean, "url": ch["url"]})
+        if satelliteGroup:
+            self.finalGroups["卫视,#genre#"] = satelliteGroup
+
+    def processHongKong(self):
+        key = "香港,#genre#"
+        if key not in self.parsedData: return
+        channels = self.parsedData[key]
         phoenix = []
         others = []
-        for ch in self.parsed.get("香港,#genre#", []):
-            c = self.clean(ch["raw"])
-            item = {"title": c, "url": ch["url"]}
-            if any(x in c for x in ["凤凰中文","鳳凰中文","凤凰资讯","鳳凰資訊","凤凰香港","鳳凰香港"]):
+        for ch in channels:
+            clean = self.cleanTitle(ch["title"])
+            item = {"title": clean, "url": ch["url"]}
+            if any(x in clean for x in ["鳳凰衛視中文", "鳳凰資訊", "凤凰卫视中文", "凤凰资讯"]):
                 phoenix.append(item)
             else:
                 others.append(item)
-            self.used.add(c)
-        if phoenix + others:
-            self.final["香港,#genre#"] = phoenix + others
+        final_hk = phoenix + others
+        if final_hk:
+            self.finalGroups["香港,#genre#"] = final_hk
 
-    # 台湾：关键词前置
-    def process_taiwan(self):
-        pri = []
-        rest = []
-        keys = ["新闻","新聞","综合","綜合","娱乐","娛樂","财经","財經","电影","電影","戏剧","戲劇","台视","中视","华视","民视","公视"]
-        for ch in self.parsed.get("台灣,#genre#", []):
-            c = self.clean(ch["raw"])
-            item = {"title": c, "url": ch["url"]}
-            if any(k in c for k in keys):
-                pri.append(item)
+    def processTaiwan(self):
+        key = "台灣,#genre#"
+        if key not in self.parsedData: return
+        channels = self.parsedData[key]
+        priority = []
+        others = []
+        for ch in channels:
+            clean = self.cleanTitle(ch["title"])
+            item = {"title": clean, "url": ch["url"]}
+            if any(k in clean for k in ["新聞", "綜合", "娛樂", "新闻", "综合", "娱乐"]):
+                priority.append(item)
             else:
-                rest.append(item)
-            self.used.add(c)
-        if pri or rest:
-            self.final["台灣,#genre#"] = pri + rest
+                others.append(item)
+        final_tw = priority + others
+        if final_tw:
+            self.finalGroups["台灣,#genre#"] = final_tw
 
-    # 剩余大陆频道 → 按省份归类
-    def process_province(self):
-        province = defaultdict(list)
-        mainland = self.parsed.get("中國大陸,#genre#", []) + self.parsed.get("中国大陆,#genre#", [])
-        for ch in mainland:
-            c = self.clean(ch["raw"])
-            if c in self.used or c.startswith("CCTV") or "卫视" in c or "衛視" in c:
-                continue
+    # ==================== 新增：只处理剩下的地方台，按省份归类 ====================
+    def processProvinceFromMainland(self):
+        key = "中國大陸,#genre#"
+        if key not in self.parsedData: return
+
+        # 已使用的标题（央视 + 卫视）
+        used = set()
+        for g in ["央视,#genre#", "卫视,#genre#"]:
+            for c in self.finalGroups.get(g, []):
+                used.add(self.cleanTitle(c["title"]))
+
+        province_map = {
+            "北京":["北京"],"上海":["上海"],"重庆":["重庆"],"天津":["天津"],
+            "广东":["广东","廣東","广州","廣州","深圳","东莞","東莞","佛山","珠海","惠州","中山","江门","汕头","湛江"],
+            "浙江":["浙江","杭州","宁波","寧波","温州","溫州","嘉兴","绍兴","金华","台州"],
+            "江苏":["江苏","江蘇","南京","苏州","蘇州","无锡","無錫","常州","南通","扬州","镇江"],
+            "山东":["山东","山東","济南","濟南","青岛","青島","烟台","潍坊"],
+            "四川":["四川","成都","绵阳","德阳","南充"],
+            "陕西":["陕西","陝西","西安","咸阳","宝鸡"],
+            "湖北":["湖北","武汉","武漢","宜昌","襄阳"],
+            "湖南":["湖南","长沙","長沙","株洲","湘潭","岳阳"],
+            "河南":["河南","郑州","鄭州","洛阳"],
+            "福建":["福建","福州","厦门","廈門","泉州"],
+            "安徽":["安徽","合肥","芜湖"],
+            "江西":["江西","南昌","赣州"],
+            "河北":["河北","石家庄","唐山"],
+            "黑龙江":["黑龙江","黑龍江","哈尔滨","哈爾濱"],
+            "辽宁":["辽宁","遼寧","沈阳","瀋陽","大连"],
+            "广西":["广西","廣西","南宁","南寧"],
+            "云南":["云南","雲南","昆明"],
+        }
+
+        province_groups = defaultdict(list)
+        for ch in self.parsedData[key]:
+            clean = self.cleanTitle(ch["title"])
+            if clean in used: continue
+            if clean.startswith("CCTV"): continue
+            if "卫视" in clean or "衛視" in clean: continue
+
             found = False
-            for prov, kws in PROVINCE_KEYWORDS.items():
-                if any(kw in c for kw in kws):
-                    province[prov].append({"title": c, "url": ch["url"]})
+            for province, keys in province_map.items():
+                if any(k in clean for k in keys):
+                    province_groups[province].append({"title": clean, "url": ch["url"]})
                     found = True
                     break
             if not found:
-                province["其他省份"].append({"title": c, "url": ch["url"]})
+                province_groups["其他省份"].append({"title": clean, "url": ch["url"]})
 
-        for p in PROVINCE_ORDER:
-            if province[p]:
-                self.final[f"{p},#genre#"] = province[p]
-        for p in sorted(province):
-            if p not in PROVINCE_ORDER and province[p]:
-                self.final[f"{p},#genre#"] = province[p]
+        # 按你喜欢的顺序输出
+        order = ["北京","上海","广东","浙江","江苏","湖南","山东","四川","陕西","湖北","河南","福建","安徽","江西","河北","黑龙江","辽宁","广西","云南","重庆","天津"]
+        for p in order:
+            if province_groups[p]:
+                self.finalGroups[f"{p},#genre#"] = province_groups[p]
+        for p in sorted(province_groups):
+            if p not in order:
+                self.finalGroups[f"{p},#genre#"] = province_groups[p]
 
-    def output(self):
-        top = ["央视,#genre#", "卫视,#genre#", "香港,#genre#", "台灣,#genre#"]
+    # ==================== 输出顺序完全按你要求 ====================
+    def outputResult(self):
+        ordered = ["央视,#genre#", "卫视,#genre#", "香港,#genre#", "台灣,#genre#"]
         lines = []
-        for g in top:
-            if g in self.final:
+
+        for g in ordered:
+            if g in self.finalGroups and self.finalGroups[g]:
                 lines.append(g)
-                for ch in self.final[g]:
+                for ch in self.finalGroups[g]:
                     lines.append(f"{ch['title']},{ch['url']}")
                 lines.append("")
 
-        for g in [k for k in self.final if k not in top]:
-            lines.append(g)
-            for ch in self.final[g]:
-                lines.append(f"{ch['title']},{ch['url']}")
-            lines.append("")
+        # 省份组
+        for g in self.finalGroups:
+            if g not in ordered and g.endswith(",#genre#"):
+                lines.append(g)
+                for ch in self.finalGroups[g]:
+                    lines.append(f"{ch['title']},{ch['url']}")
+                lines.append("")
 
         result = "\n".join(lines).rstrip() + "\n"
         print(result)
