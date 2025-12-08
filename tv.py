@@ -72,13 +72,19 @@ name_map = {
     r"(?i)cctv[ -]?17.*": "CCTV17 农业", r"(?i)纪录.*": "CCTV9 纪录",
     r"(?i)戏曲.*": "CCTV11 戏曲", r"(?i)第一剧场.*": "CCTV8 剧场",
     r"(?i)风云足球.*": "CCTV 风云足球", r"(?i)cctv[ -]?1.*": "CCTV1",
-    r"(?i)cctv[ -]?2.*": "CCTV2", r"(?i)cctv[ -]?3.*": "CCTV3",  # ... 扩展所有
+    r"(?i)cctv[ -]?2.*": "CCTV2", r"(?i)cctv[ -]?3.*": "CCTV3", r"(?i)cctv[ -]?4.*": "CCTV4",
+    r"(?i)cctv[ -]?5.*": "CCTV5", r"(?i)cctv[ -]?6.*": "CCTV6", r"(?i)cctv[ -]?7.*": "CCTV7",
+    r"(?i)cctv[ -]?8.*": "CCTV8", r"(?i)8k.*": "CCTV8K",
     # 陕西地方台（扩展）
     r"(?i)西安.*": "陕西 西安新闻", r"(?i)陕西公共.*": "陕西 公共", r"(?i)陕西都市.*": "陕西 都市",
     r"(?i)陕西新闻.*": "陕西 新闻", r"(?i)宝鸡.*": "陕西 宝鸡", r"(?i)咸阳.*": "陕西 咸阳",
-    # 其他省份地方台扩展（示例，类似陕西）
+    # 其他省份地方台扩展
     r"(?i)广州.*": "广东 广州新闻", r"(?i)成都.*": "四川 成都新闻", r"(?i)武汉.*": "湖北 武汉新闻",
     r"(?i)杭州.*": "浙江 杭州新闻", r"(?i)南京.*": "江苏 南京新闻", r"(?i)长沙.*": "湖南 长沙新闻",
+    r"(?i)济南.*": "山东 济南新闻", r"(?i)福州.*": "福建 福州新闻", r"(?i)合肥.*": "安徽 合肥新闻",
+    r"(?i)南昌.*": "江西 南昌新闻", r"(?i)石家庄.*": "河北 石家庄新闻", r"(?i)哈尔滨.*": "黑龙江 哈尔滨新闻",
+    r"(?i)沈阳.*": "辽宁 沈阳新闻", r"(?i)南宁.*": "广西 南宁新闻", r"(?i)昆明.*": "云南 昆明新闻",
+    r"(?i)重庆.*": "重庆 新闻", r"(?i)天津.*": "天津 新闻",
     # 香港/台灣
     r"(?i)凤凰.*": "凤凰卫视中文台", r"(?i)無線.*": "无线翡翠台", r"(?i)緯來.*": "纬来体育台",
 }
@@ -116,18 +122,47 @@ def assign_group(name, c):
         groups["四川"].append(c)
     elif "湖北" in n or "武汉" in n:
         groups["湖北"].append(c)
-    # ... 类似扩展其他省份
+    elif "广东" in n or "广州" in n:
+        groups["广东"].append(c)
+    elif "浙江" in n or "杭州" in n:
+        groups["浙江"].append(c)
+    elif "江苏" in n or "南京" in n:
+        groups["江苏"].append(c)
+    elif "湖南" in n or "长沙" in n:
+        groups["湖南"].append(c)
+    elif "山东" in n or "济南" in n:
+        groups["山东"].append(c)
+    elif "福建" in n or "福州" in n:
+        groups["福建"].append(c)
+    elif "安徽" in n or "合肥" in n:
+        groups["安徽"].append(c)
+    elif "江西" in n or "南昌" in n:
+        groups["江西"].append(c)
+    elif "河北" in n or "石家庄" in n:
+        groups["河北"].append(c)
+    elif "黑龙江" in n or "哈尔滨" in n:
+        groups["黑龙江"].append(c)
+    elif "辽宁" in n or "沈阳" in n:
+        groups["辽宁"].append(c)
+    elif "广西" in n or "南宁" in n:
+        groups["广西"].append(c)
+    elif "云南" in n or "昆明" in n:
+        groups["云南"].append(c)
+    elif "重庆" in n:
+        groups["重庆"].append(c)
+    elif "天津" in n:
+        groups["天津"].append(c)
+    elif "北京" in n:
+        groups["北京"].append(c)
+    elif "上海" in n:
+        groups["上海"].append(c)
     else:
-        for p in ["北京", "上海", "广东", "浙江", "江苏", "湖南", "山东", "河南", "福建", "安徽", "江西", "河北", "黑龙江", "辽宁", "广西", "云南", "重庆", "天津"]:
-            if p in n:
-                groups[p].append(c)
-                return
         groups["其他省份"].append(c)
 
 for c in channels:
     assign_group(c["final_name"], c)
 
-# 央视排序（确保 CCTV9 及以后在位）
+# 央视排序
 cctv_order = ["CCTV1", "CCTV2", "CCTV3", "CCTV4", "CCTV5", "CCTV5+", "CCTV6", "CCTV7", "CCTV8", "CCTV9 纪录", "CCTV10 科教", "CCTV11 戏曲", "CCTV12 社会与法", "CCTV13 新闻", "CCTV14 少儿", "CCTV15 音乐", "CCTV16 奥运", "CCTV17 农业", "CCTV8K", "CCTV 风云足球"]
 sorted_cctv = []
 for std in cctv_order:
