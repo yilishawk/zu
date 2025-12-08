@@ -1473,14 +1473,76 @@ https://stream1.freetv.fun/fei-cui-14.ctv
 https://stream1.freetv.fun/fei-cui-5.ctv
 #EXTINF:-1 tvg-name="翡翠台" tvg-id="368366" tvg-country="Hong Kong" tvg-language="Cantonese" tvg-logo="https://epg.pw/media/images/channel/2023/07/20/large/20230720173151124119_90.png" group-title="Generic",翡翠
 https://stream1.freetv.fun/fei-cui-11.ctv
+#EXTINF:-1 tvg-name="TVBS新聞HD" tvg-id="370174" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2025/01/28/large/20250128055934838968_50.png" group-title="News",tvbs新聞台 *4g
+https://stream1.freetv.fun/tvbsxin-wen-tai---4g-1.m3u8
 #EXTINF:-1 tvg-name="三立戲劇" tvg-id="460853" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/21/large/20230721172523829915_30.png" group-title="Movies",三立戏剧 *sm
 https://stream1.freetv.fun/san-li-xi-ju---sm-1.ctv
+#EXTINF:-1 tvg-name="三立新聞" tvg-id="456555" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/21/large/20230721173220819747_86.png" group-title="News",三立新聞
+https://stream1.freetv.fun/san-li-xin-wen-3.ctv
+#EXTINF:-1 tvg-name="三立新聞" tvg-id="456555" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/21/large/20230721173220819747_86.png" group-title="News",三立新聞
+https://stream1.freetv.fun/san-li-xin-wen-6.ctv
 #EXTINF:-1 tvg-name="三立綜合" tvg-id="460817" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/21/large/20230721172453389269_45.png" group-title="Generic",三立綜合合
 https://stream1.freetv.fun/san-li-zong-he-he-4.m3u8
+#EXTINF:-1 tvg-name="中天新聞" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/11/large/20230711224446764842_40.jpg" group-title="News",中天新聞台 *4g
+https://stream1.freetv.fun/zhong-tian-xin-wen-tai---4g-3.m3u8
+#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
+https://stream1.freetv.fun/zhong-tian-xin-wen-10.ctv
+#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
+https://stream1.freetv.fun/zhong-tian-xin-wen-8.ctv
+#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
+https://stream1.freetv.fun/zhong-tian-xin-wen-11.m3u8
+#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
+https://stream1.freetv.fun/zhong-tian-xin-wen-12.m3u8
+#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
+https://stream1.freetv.fun/zhong-tian-xin-wen-13.m3u8
+#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
+https://stream1.freetv.fun/zhong-tian-xin-wen-15.m3u8
+#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
+https://stream1.freetv.fun/zhong-tian-xin-wen-16.m3u8
+#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新闻 *sm
+https://stream1.freetv.fun/zhong-tian-xin-wen---sm-1.ctv
+#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞台 *4g
+https://stream1.freetv.fun/zhong-tian-xin-wen-tai---4g-1.m3u8
+#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞台 *4g
+https://stream1.freetv.fun/zhong-tian-xin-wen-tai---4g-2.m3u8
+#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
+https://stream1.freetv.fun/zhong-tian-xin-wen-14.m3u8
+#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
+https://stream1.freetv.fun/zhong-tian-xin-wen-4.ctv
+#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新闻
+https://stream1.freetv.fun/zhong-tian-xin-wen-6.ctv
+#EXTINF:-1 tvg-name="中天綜合HD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2019/01/15/large/20190115233042115640_98.jpg" group-title="Generic",中天综合
+https://stream1.freetv.fun/zhong-tian-zong-he-3.ctv
+#EXTINF:-1 tvg-name="中天綜合HD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2019/01/15/large/20190115233042115640_98.jpg" group-title="Generic",中天综合 *sm
+https://stream1.freetv.fun/zhong-tian-zong-he---sm-1.ctv
+#EXTINF:-1 tvg-name="中視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/05/06/large/20220506164553238162_16.png" group-title="News",中視新聞台 *4g
+https://stream1.freetv.fun/zhong-shi-xin-wen-tai---4g-1.m3u8
 #EXTINF:-1 tvg-name="台州新聞綜合" tvg-id="" tvg-country="China" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/11/01/large/20221101020712299758_11.jpg" group-title="News",台州新闻综合
 https://stream1.freetv.fun/tai-zhou-xin-wen-zong-he-5.m3u8
+#EXTINF:-1 tvg-name="台視新聞" tvg-id="460822" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724092903588198_34.png" group-title="News",台視新聞台 *4g
+https://stream1.freetv.fun/tai-shi-xin-wen-tai---4g-2.m3u8
+#EXTINF:-1 tvg-name="台視新聞FHD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724094914581648_75.png" group-title="News",台視新聞台 *4g
+https://stream1.freetv.fun/tai-shi-xin-wen-tai---4g-1.m3u8
 #EXTINF:-1 tvg-name="台視新聞FHD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724094914581648_75.png" group-title="News",台视新闻
 https://stream1.freetv.fun/tai-shi-xin-wen-17.m3u8
+#EXTINF:-1 tvg-name="寰宇新聞" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134624405697_90.png" group-title="News",寰宇新聞台灣台 *4g
+https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-tai---4g-1.m3u8
+#EXTINF:-1 tvg-name="寰宇新聞" tvg-id="370179" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134213849437_33.png" group-title="News",寰宇新聞台灣台 *4g
+https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-tai---4g-2.m3u8
+#EXTINF:-1 tvg-name="寰宇新聞" tvg-id="370179" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134213849437_33.png" group-title="News",寰宇新聞台灣台 *4g
+https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-tai---4g-3.m3u8
+#EXTINF:-1 tvg-name="寰宇新聞台灣臺" tvg-id="460871" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134538350977_27.png" group-title="News",寰宇新聞台灣
+https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-5.m3u8
+#EXTINF:-1 tvg-name="寰宇新聞台灣臺" tvg-id="460871" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134538350977_27.png" group-title="News",寰宇新聞台灣
+https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-6.m3u8
+#EXTINF:-1 tvg-name="寰宇新聞台灣臺" tvg-id="460871" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134538350977_27.png" group-title="News",寰宇新聞台灣
+https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-7.m3u8
+#EXTINF:-1 tvg-name="寰宇新聞台灣臺" tvg-id="460871" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134538350977_27.png" group-title="News",寰宇新聞台灣
+https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-8.m3u8
+#EXTINF:-1 tvg-name="寰宇新聞台灣臺" tvg-id="460871" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134538350977_27.png" group-title="News",寰宇新聞台灣
+https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-9.m3u8
+#EXTINF:-1 tvg-name="寰宇新聞台灣臺" tvg-id="460871" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134538350977_27.png" group-title="News",寰宇新聞台灣
+https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-10.m3u8
 #EXTINF:-1 tvg-name="廣州新聞" tvg-id="" tvg-country="China" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/21/large/20230721135410645686_37.png" group-title="News",广州电视台新闻
 https://stream1.freetv.fun/yan-zhou-dian-shi-tai-xin-wen-1.m3u8
 #EXTINF:-1 tvg-name="東森戲劇" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/11/26/large/20221126213003695910_75.jpg" group-title="Movies",东森戏剧 *sm
@@ -1503,6 +1565,24 @@ https://stream1.freetv.fun/dong-sen-dian-ying---sm-1.ctv
 https://stream1.freetv.fun/dong-sen-dian-ying-5.m3u8
 #EXTINF:-1 tvg-name="緯來電影" tvg-id="456565" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/22/large/20230722105432854571_34.png" group-title="Movies",纬来电影
 https://stream1.freetv.fun/wei-lai-dian-ying-4.ctv
+#EXTINF:-1 tvg-name="臺視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2016/11/22/20161122123940121042_91.png" group-title="News",台視新聞
+https://stream1.freetv.fun/tai-shi-xin-wen-15.m3u8
+#EXTINF:-1 tvg-name="臺視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2016/11/22/20161122123940121042_91.png" group-title="News",台視新聞
+https://stream1.freetv.fun/tai-shi-xin-wen-16.m3u8
+#EXTINF:-1 tvg-name="臺視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2016/11/22/20161122123940121042_91.png" group-title="News",台視新聞
+https://stream1.freetv.fun/tai-shi-xin-wen-7.m3u8
+#EXTINF:-1 tvg-name="臺視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2016/11/22/20161122123940121042_91.png" group-title="News",台視新聞
+https://stream1.freetv.fun/tai-shi-xin-wen-14.m3u8
+#EXTINF:-1 tvg-name="臺視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2016/11/22/20161122123940121042_91.png" group-title="News",台視新聞
+https://stream1.freetv.fun/tai-shi-xin-wen-2.m3u8
+#EXTINF:-1 tvg-name="臺視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2016/11/22/20161122123940121042_91.png" group-title="News",台視新聞
+https://stream1.freetv.fun/tai-shi-xin-wen-12.m3u8
+#EXTINF:-1 tvg-name="臺視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2016/11/22/20161122123940121042_91.png" group-title="News",台視新聞
+https://stream1.freetv.fun/tai-shi-xin-wen-4.m3u8
+#EXTINF:-1 tvg-name="臺視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2016/11/22/20161122123940121042_91.png" group-title="News",台视新聞
+https://stream1.freetv.fun/tai-shi-xin-wen-21.m3u8
+#EXTINF:-1 tvg-name="華視新聞FHD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/18/large/20230718001252593456_95.jpg" group-title="News",華視新聞台 *4g
+https://stream1.freetv.fun/hua-shi-xin-wen-tai---4g-1.m3u8
 #EXTINF:-1 tvg-name="邢臺綜合" tvg-id="" tvg-country="China" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/10/31/large/20221031233706366035_78.jpg" group-title="Generic",邢台综合频道
 https://stream1.freetv.fun/xing-tai-zong-he-1.m3u8
 #EXTINF:-1 tvg-name="邢臺綜合" tvg-id="" tvg-country="China" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/10/31/large/20221031233706366035_78.jpg" group-title="Generic",邢台综合频道
@@ -1543,8 +1623,6 @@ https://stream1.freetv.fun/sbnquan-qiu-cai-jing-tai---4g-1.m3u8
 https://stream1.freetv.fun/tvbstai-ju-2.m3u8
 #EXTINF:-1 tvg-name="TVBS HD" tvg-id="370183" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/20/large/20230720162650498510_75.png" group-title="Generic",tvbs台劇
 https://stream1.freetv.fun/tvbstai-ju-3.m3u8
-#EXTINF:-1 tvg-name="TVBS新聞HD" tvg-id="370174" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2025/01/28/large/20250128055934838968_50.png" group-title="News",tvbs新聞台 *4g
-https://stream1.freetv.fun/tvbsxin-wen-tai---4g-1.m3u8
 #EXTINF:-1 tvg-name="TVBS歡樂臺HD" tvg-id="370191" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2025/01/28/large/20250128055954129777_18.png" group-title="Entertainment",tvbs歡樂台 *4g
 https://stream1.freetv.fun/tvbshuan-le-tai---4g-1.m3u8
 #EXTINF:-1 tvg-name="TVBS歡樂臺HD" tvg-id="370191" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2025/01/28/large/20250128055954129777_18.png" group-title="Entertainment",tvbs歡樂台 *4g
@@ -1563,10 +1641,6 @@ https://stream1.freetv.fun/san-li-inews-5.m3u8
 https://stream1.freetv.fun/san-li-inews-6.m3u8
 #EXTINF:-1 tvg-name="三立INEWS HD" tvg-id="370173" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/11/27/large/20221127005733419108_21.jpg" group-title="News",三立inews *4g
 https://stream1.freetv.fun/san-li-inews--4g-2.m3u8
-#EXTINF:-1 tvg-name="三立新聞" tvg-id="456555" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/21/large/20230721173220819747_86.png" group-title="News",三立新聞
-https://stream1.freetv.fun/san-li-xin-wen-3.ctv
-#EXTINF:-1 tvg-name="三立新聞" tvg-id="456555" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/21/large/20230721173220819747_86.png" group-title="News",三立新聞
-https://stream1.freetv.fun/san-li-xin-wen-6.ctv
 #EXTINF:-1 tvg-name="三立臺灣台" tvg-id="456529" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/21/large/20230721172357360661_85.png" group-title="Generic",三立台湾
 https://stream1.freetv.fun/san-li-tai-wan-1.ctv
 #EXTINF:-1 tvg-name="三立臺灣台" tvg-id="456529" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/21/large/20230721172357360661_85.png" group-title="Generic",三立台湾 *sm
@@ -1577,18 +1651,18 @@ https://stream1.freetv.fun/san-li-du-hui-4.ctv
 https://stream1.freetv.fun/san-li-du-hui-2.ctv
 #EXTINF:-1 tvg-name="中天亞洲" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/11/large/20230711215559259916_97.png" group-title="Generic",中天亞洲台 *4g
 https://stream1.freetv.fun/zhong-tian-ya-zhou-tai---4g-1.m3u8
-#EXTINF:-1 tvg-name="中天新聞" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/11/large/20230711224446764842_40.jpg" group-title="News",中天新聞台 *4g
-https://stream1.freetv.fun/zhong-tian-xin-wen-tai---4g-3.m3u8
-#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞台 *4g
-https://stream1.freetv.fun/zhong-tian-xin-wen-tai---4g-1.m3u8
-#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞台 *4g
-https://stream1.freetv.fun/zhong-tian-xin-wen-tai---4g-2.m3u8
+#EXTINF:-1 tvg-name="中天亞洲FHD" tvg-id="410372" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2025/01/31/large/20250131032139085563_41.png" group-title="Generic",中天亞洲
+https://stream1.freetv.fun/zhong-tian-ya-zhou-2.m3u8
+#EXTINF:-1 tvg-name="中天亞洲FHD" tvg-id="410372" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2025/01/31/large/20250131032139085563_41.png" group-title="Generic",中天亞洲
+https://stream1.freetv.fun/zhong-tian-ya-zhou-10.m3u8
+#EXTINF:-1 tvg-name="中天娛樂HD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2016/01/14/large/20160114210645647968_28.jpg" group-title="Entertainment",中天娛樂
+https://stream1.freetv.fun/zhong-tian-yu-le-6.ctv
+#EXTINF:-1 tvg-name="中天娛樂HD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2016/01/14/large/20160114210645647968_28.jpg" group-title="Entertainment",中天娛樂
+https://stream1.freetv.fun/zhong-tian-yu-le-4.ctv
 #EXTINF:-1 tvg-name="中視" tvg-id="370141" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/11/large/20230711221412936937_72.png" group-title="Generic",中视
 https://stream1.freetv.fun/zhong-shi-1.ctv
 #EXTINF:-1 tvg-name="中視HD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/11/26/large/20221126214137329410_57.jpg" group-title="Generic",中视 *sm
 https://stream1.freetv.fun/zhong-shi---sm-1.ctv
-#EXTINF:-1 tvg-name="中視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/05/06/large/20220506164553238162_16.png" group-title="News",中視新聞台 *4g
-https://stream1.freetv.fun/zhong-shi-xin-wen-tai---4g-1.m3u8
 #EXTINF:-1 tvg-name="中視經典" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/11/large/20230711221628321961_26.jpg" group-title="Generic",中視經典台 *4g
 https://stream1.freetv.fun/zhong-shi-jing-dian-tai---4g-1.m3u8
 #EXTINF:-1 tvg-name="中視菁采臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2021/12/28/large/20211228171426835864_33.png" group-title="Generic",中視菁采台 *4g
@@ -1597,32 +1671,10 @@ https://stream1.freetv.fun/zhong-shi-jing-cai-tai---4g-1.m3u8
 https://stream1.freetv.fun/gong-shi---sm-1.ctv
 #EXTINF:-1 tvg-name="台視HD" tvg-id="460808" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724092817835507_62.png" group-title="Generic",台視hd *4g
 https://stream1.freetv.fun/tai-shi-hd--4g-1.m3u8
-#EXTINF:-1 tvg-name="台視新聞" tvg-id="460822" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724092903588198_34.png" group-title="News",台視新聞台 *4g
-https://stream1.freetv.fun/tai-shi-xin-wen-tai---4g-2.m3u8
-#EXTINF:-1 tvg-name="台視新聞FHD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724094914581648_75.png" group-title="News",台視新聞台 *4g
-https://stream1.freetv.fun/tai-shi-xin-wen-tai---4g-1.m3u8
 #EXTINF:-1 tvg-name="大愛一臺HD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2025/01/28/large/20250128055734216003_46.jpg" group-title="Other",大爱1 *sm
 https://stream1.freetv.fun/da-ai-1--sm-1.ctv
 #EXTINF:-1 tvg-name="大愛二臺HD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2015/05/21/large/20150521014333336253_94.png" group-title="Other",大愛二台 *4g
 https://stream1.freetv.fun/da-ai-er-tai---4g-1.m3u8
-#EXTINF:-1 tvg-name="寰宇新聞" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134624405697_90.png" group-title="News",寰宇新聞台灣台 *4g
-https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-tai---4g-1.m3u8
-#EXTINF:-1 tvg-name="寰宇新聞" tvg-id="370179" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134213849437_33.png" group-title="News",寰宇新聞台灣台 *4g
-https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-tai---4g-2.m3u8
-#EXTINF:-1 tvg-name="寰宇新聞" tvg-id="370179" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134213849437_33.png" group-title="News",寰宇新聞台灣台 *4g
-https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-tai---4g-3.m3u8
-#EXTINF:-1 tvg-name="寰宇新聞台灣臺" tvg-id="460871" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134538350977_27.png" group-title="News",寰宇新聞台灣
-https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-5.m3u8
-#EXTINF:-1 tvg-name="寰宇新聞台灣臺" tvg-id="460871" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134538350977_27.png" group-title="News",寰宇新聞台灣
-https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-6.m3u8
-#EXTINF:-1 tvg-name="寰宇新聞台灣臺" tvg-id="460871" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134538350977_27.png" group-title="News",寰宇新聞台灣
-https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-7.m3u8
-#EXTINF:-1 tvg-name="寰宇新聞台灣臺" tvg-id="460871" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134538350977_27.png" group-title="News",寰宇新聞台灣
-https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-8.m3u8
-#EXTINF:-1 tvg-name="寰宇新聞台灣臺" tvg-id="460871" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134538350977_27.png" group-title="News",寰宇新聞台灣
-https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-9.m3u8
-#EXTINF:-1 tvg-name="寰宇新聞台灣臺" tvg-id="460871" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/24/large/20230724134538350977_27.png" group-title="News",寰宇新聞台灣
-https://stream1.freetv.fun/huan-yu-xin-wen-tai-wan-10.m3u8
 #EXTINF:-1 tvg-name="東森洋片" tvg-id="460925" tvg-country="Taiwan" tvg-language="English" tvg-logo="https://epg.pw/media/images/channel/2023/07/22/large/20230722105927706804_92.png" group-title="Movies",东森洋片
 https://stream1.freetv.fun/dong-sen-yang-pian-4.ctv
 #EXTINF:-1 tvg-name="東森洋片" tvg-id="" tvg-country="Taiwan" tvg-language="English" tvg-logo="https://epg.pw/media/images/channel/2022/11/26/large/20221126212617272813_69.jpg" group-title="Movies",东森洋片 *sm
@@ -1663,30 +1715,12 @@ https://stream1.freetv.fun/tai-shi-7.m3u8
 https://stream1.freetv.fun/tai-shi-10.m3u8
 #EXTINF:-1 tvg-name="臺視HD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2015/09/29/20150929121750759037_14.jpg" group-title="News",台視
 https://stream1.freetv.fun/tai-shi-12.m3u8
-#EXTINF:-1 tvg-name="臺視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2016/11/22/20161122123940121042_91.png" group-title="News",台視新聞
-https://stream1.freetv.fun/tai-shi-xin-wen-15.m3u8
-#EXTINF:-1 tvg-name="臺視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2016/11/22/20161122123940121042_91.png" group-title="News",台視新聞
-https://stream1.freetv.fun/tai-shi-xin-wen-16.m3u8
-#EXTINF:-1 tvg-name="臺視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2016/11/22/20161122123940121042_91.png" group-title="News",台視新聞
-https://stream1.freetv.fun/tai-shi-xin-wen-7.m3u8
-#EXTINF:-1 tvg-name="臺視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2016/11/22/20161122123940121042_91.png" group-title="News",台視新聞
-https://stream1.freetv.fun/tai-shi-xin-wen-14.m3u8
-#EXTINF:-1 tvg-name="臺視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2016/11/22/20161122123940121042_91.png" group-title="News",台視新聞
-https://stream1.freetv.fun/tai-shi-xin-wen-2.m3u8
-#EXTINF:-1 tvg-name="臺視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2016/11/22/20161122123940121042_91.png" group-title="News",台視新聞
-https://stream1.freetv.fun/tai-shi-xin-wen-12.m3u8
-#EXTINF:-1 tvg-name="臺視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2016/11/22/20161122123940121042_91.png" group-title="News",台視新聞
-https://stream1.freetv.fun/tai-shi-xin-wen-4.m3u8
-#EXTINF:-1 tvg-name="臺視新聞臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/uploads/tmp_logo/2016/11/22/20161122123940121042_91.png" group-title="News",台视新聞
-https://stream1.freetv.fun/tai-shi-xin-wen-21.m3u8
 #EXTINF:-1 tvg-name="臺視財經臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2016/01/14/large/20160114205737775986_67.jpg" group-title="News",台視財經
 https://stream1.freetv.fun/tai-shi-cai-jing-4.m3u8
 #EXTINF:-1 tvg-name="臺視財經臺" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2016/01/14/large/20160114205737775986_67.jpg" group-title="News",台視財經
 https://stream1.freetv.fun/tai-shi-cai-jing-3.m3u8
 #EXTINF:-1 tvg-name="華視" tvg-id="370143" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2020/07/26/large/20200726143140379428_88.jpg" group-title="Generic",华视
 https://stream1.freetv.fun/hua-shi-8.ctv
-#EXTINF:-1 tvg-name="華視新聞FHD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/18/large/20230718001252593456_95.jpg" group-title="News",華視新聞台 *4g
-https://stream1.freetv.fun/hua-shi-xin-wen-tai---4g-1.m3u8
 #EXTINF:-1 tvg-name="邢臺經濟生活" tvg-id="" tvg-country="China" tvg-language="Chinese" tvg-logo="https://epg.pw/media/img/logo/3_368.jpg" group-title="Other",邢台生活
 https://stream1.freetv.fun/xing-tai-sheng-huo-1.m3u8
 #EXTINF:-1 tvg-name="靖天卡通" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/20/large/20230720211529385804_31.png" group-title="Kids",靖天卡通台 *4g
@@ -7251,40 +7285,6 @@ https://stream1.freetv.fun/shang-yu-xin-shang-du-7.m3u8
 https://stream1.freetv.fun/shang-yu-xin-wen-zong-he-5.m3u8
 #EXTINF:-1 tvg-name="上虞新聞綜合" tvg-id="" tvg-country="China" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/10/13/large/20231013202735777838_86.png" group-title="News",上虞新闻综合
 https://stream1.freetv.fun/shang-yu-xin-wen-zong-he-2.m3u8
-#EXTINF:-1 tvg-name="中天亞洲FHD" tvg-id="410372" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2025/01/31/large/20250131032139085563_41.png" group-title="Generic",中天亞洲
-https://stream1.freetv.fun/zhong-tian-ya-zhou-2.m3u8
-#EXTINF:-1 tvg-name="中天亞洲FHD" tvg-id="410372" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2025/01/31/large/20250131032139085563_41.png" group-title="Generic",中天亞洲
-https://stream1.freetv.fun/zhong-tian-ya-zhou-10.m3u8
-#EXTINF:-1 tvg-name="中天娛樂HD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2016/01/14/large/20160114210645647968_28.jpg" group-title="Entertainment",中天娛樂
-https://stream1.freetv.fun/zhong-tian-yu-le-6.ctv
-#EXTINF:-1 tvg-name="中天娛樂HD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2016/01/14/large/20160114210645647968_28.jpg" group-title="Entertainment",中天娛樂
-https://stream1.freetv.fun/zhong-tian-yu-le-4.ctv
-#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
-https://stream1.freetv.fun/zhong-tian-xin-wen-10.ctv
-#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
-https://stream1.freetv.fun/zhong-tian-xin-wen-8.ctv
-#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
-https://stream1.freetv.fun/zhong-tian-xin-wen-11.m3u8
-#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
-https://stream1.freetv.fun/zhong-tian-xin-wen-12.m3u8
-#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
-https://stream1.freetv.fun/zhong-tian-xin-wen-13.m3u8
-#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
-https://stream1.freetv.fun/zhong-tian-xin-wen-15.m3u8
-#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
-https://stream1.freetv.fun/zhong-tian-xin-wen-16.m3u8
-#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新闻 *sm
-https://stream1.freetv.fun/zhong-tian-xin-wen---sm-1.ctv
-#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
-https://stream1.freetv.fun/zhong-tian-xin-wen-14.m3u8
-#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新聞
-https://stream1.freetv.fun/zhong-tian-xin-wen-4.ctv
-#EXTINF:-1 tvg-name="中天新聞FHD" tvg-id="370177" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2022/03/05/large/20220305151207450324_69.png" group-title="News",中天新闻
-https://stream1.freetv.fun/zhong-tian-xin-wen-6.ctv
-#EXTINF:-1 tvg-name="中天綜合HD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2019/01/15/large/20190115233042115640_98.jpg" group-title="Generic",中天综合
-https://stream1.freetv.fun/zhong-tian-zong-he-3.ctv
-#EXTINF:-1 tvg-name="中天綜合HD" tvg-id="" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2019/01/15/large/20190115233042115640_98.jpg" group-title="Generic",中天综合 *sm
-https://stream1.freetv.fun/zhong-tian-zong-he---sm-1.ctv
 #EXTINF:-1 tvg-name="中視" tvg-id="370141" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2023/07/11/large/20230711221412936937_72.png" group-title="Generic",中視
 https://stream1.freetv.fun/zhong-shi-16.m3u8
 #EXTINF:-1 tvg-name="中視HD" tvg-id="460779" tvg-country="Taiwan" tvg-language="Chinese" tvg-logo="https://epg.pw/media/images/channel/2025/01/28/large/20250128055838912553_80.png" group-title="Generic",中視 *4g
