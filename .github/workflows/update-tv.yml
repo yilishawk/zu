@@ -3,42 +3,70 @@ name: 更新直播源 tv.m3u
 
 on:
   schedule:
-    - cron: '30 0 * * *'          # 每天 UTC 00:30 → 北京时间 08:30
-  workflow_dispatch:
+    - cron: '30 8 * * *'          # 每天北京时间 16:30 更新一次（UTC 08:30）
+  workflow_dispatch:              # 支持手动触发
 
 permissions:
-  contents: write
+  contents: write                 # 必须，允许提交文件
 
 jobs:
-  update:
+  update-tv:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+
+      # 1. 拉代码
+      - name: Checkout 仓库
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: 设置 Python
+      # 2. 安装 Python + curl
+      - name: 设置 Python 3.12
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: pip
+          cache: 'pip'
 
       - name: 安装依赖
         run: pip install requests
 
-      - name: 生成最新 tv.m3u
+      # 3. 生成 tv.py 自动尝试两个源 + 保底
+      - name: 生成 tv.m3u
         run: python tv.py
 
-      - name: 提交更新（如有变化）
+      # 4. 检查是否真的生成了内容（防止空文件提交）
+      - name: 检查 tv.m3u 是否有频道
+        id: check
+        run: |
+          if [ ! -f tv.m3u ]; then
+            echo "tv.m3u 文件不存在！"
+            exit 1
+          fi
+          if ! grep -q "#EXTINF" tv.m3u; then
+            echo "tv.m3u 没有频道内容！"
+            exit 1
+          fi
+          CHANNEL_COUNT=$(grep -c "#EXTINF" tv.m3u)
+          echo "tv.m3u 生成成功，共 $CHANNEL_COUNT 个频道"
+          echo "channels=$CHANNEL_COUNT" >> $GITHUB_OUTPUT
+          head -10 tv.m3u
+
+      # 5. 有变化才提交（避免每天刷无意义提交）
+      - name: 提交并推送 tv.m3u
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add tv.m3u
           
           if git diff --staged --quiet; then
-            echo "tv.m3u 无变化，跳过提交"
+            echo "tv.m3u 没有变化，跳过提交"
           else
-            git commit -m "Auto update tv.m3u $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git commit -m "Auto update tv.m3u · ${{ steps.check.outputs.channels }} 频道 · $(date -u '+%Y-%m-%d %H:%M UTC')"
             git push
-            echo "tv.m3u 已更新并推送"
+            echo "tv.m3u 已更新并推送到仓库"
           fi
+
+      # 6. （可选）失败时通知你
+      # - name: 失败通知（可删）
+      #   if: failure()
+      #   run: echo "直播源更新失败，请检查 workflow 日志"
