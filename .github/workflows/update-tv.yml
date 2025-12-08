@@ -1,0 +1,51 @@
+# .github/workflows/update-tv.yml
+name: 更新直播源 tv.m3u
+on:
+  schedule:
+    - cron: '30 0 * * * *'    # 每天 UTC 00:30（北京时间 08:30）更新一次
+  workflow_dispatch:         # 支持手动触发
+
+permissions:
+  contents: write            # 必须的，允许推送
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # 重要！避免浅克隆导致 git diff 失效
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - name: 安装依赖
+        run: pip install requests
+
+      - name: 生成最新 tv.m3u
+        run: python tv.py          # 你的脚本现在生成的是 tv.m3u
+
+      - name: 检查是否有变化并提交
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tv.m3u
+          
+          if git diff --staged --quiet; then
+            echo "没有变化，不提交"
+          else
+            git commit -m "Auto update tv.m3u $(date -u '+%Y-%m-%d %H:%M UTC')"
+            git push
+            echo "已更新并推送 tv.m3u"
+          fi
+
+      # 可选：失败时发送通知（如果你有仓库通知需求）
+      # - name: 失败通知
+      #   if: failure()
+      #   uses: slackapi/slack-github-action@v1.23.0
+      #   with:
+      #     payload: |
+      #       {"text": "直播源更新失败！请检查 workflow"}
