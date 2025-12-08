@@ -49,8 +49,8 @@ while i < len(lines):
         else:
             new_extinf = orig_extinf
 
-        if i+1 < len(lines) and lines[i+1].startswith("http"):
-            url = lines[i+i+1].strip()
+        if i + 1 < len(lines):
+            url = lines[i + 1].strip()
             channels.append({
                 "extinf": new_extinf,
                 "url": url,
