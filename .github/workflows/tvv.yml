@@ -13,27 +13,35 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          # 关键：获取所有历史记录，防止 rebase 失败
+          fetch-depth: 0
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: 'pip' # 使用 pip 缓存加速
+          cache: 'pip'
 
       - name: 安装依赖
         run: pip install requests
 
       - name: 生成并测速排序
-        run: python tvv.py
+        run: python tv.py
 
       - name: 提交并推送
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          # 确保添加的是 tvv.txt
           git add tvv.txt
-          # 检查文件是否存在且不为空，并且确实有改动
-          if [ -s tvv.txt ] && ! git diff --staged --quiet; then
+          
+          if ! git diff --staged --quiet; then
             git commit -m "Auto update tvv.txt $(date -u '+%Y-%m-%d %H:%M')"
-            git push
+            
+            # 解决 rejected 问题的关键：推送前先拉取并变基
+            git pull --rebase origin main
+            git push origin main
           else
-            echo "No changes or empty file, skipping push."
+            echo "文件无变化，跳过推送。"
           fi
