@@ -165,7 +165,7 @@ class LiveStreamCrawler:
                 for ch in channels: lines.append(f"{ch['title']},{ch['url']}")
                 lines.append("")
         
-        with open("tv.txt", "w", encoding="utf-8") as f:
+        with open("tvv.txt", "w", encoding="utf-8") as f:
             f.write("\n".join(lines).rstrip() + "\n")
 
 if __name__ == "__main__":
