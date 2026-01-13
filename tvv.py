@@ -8,8 +8,8 @@ from concurrent.futures import ThreadPoolExecutor
 URL = "https://freetv.fun/test_channels_new.txt"
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"}
 BLACKLIST = {"https://stream1.freetv.fun/tang-he-yi-tao-1.m3u8"}
-MAX_WORKERS = 20  # GitHub Actions 环境下不宜过高，避免带宽竞争影响测速
-TIMEOUT = 5       # 增加到5秒，确保慢速但稳定的源不被误删
+MAX_WORKERS = 20  
+TIMEOUT = 5       
 SPEED_TEST_GROUPS = ["央视,#genre#", "卫视,#genre#", "香港,#genre#"]
 OUTPUT_FILE = "tvv.txt"
 
@@ -60,7 +60,6 @@ class LiveStreamCrawler:
                     self.parsedData[currentGroup].append({"title": title.strip(), "url": url.strip()})
 
     def cleanTitle(self, title):
-        # 统一更名：CCTV1(RTHK33) -> CCTV1
         title = re.sub(r'CCTV-?1\(RTHK33\)', 'CCTV1', title, flags=re.I)
         patterns = [r'\s*\(backup\)', r'\s*\(h265\)', r'\s*\(h264\)', r'\s*\(备用\)', r'\s*\(备\)', r'\s*\[.*?\]', r'\s*#\d+']
         for p in patterns: title = re.sub(p, '', title, flags=re.I)
@@ -69,42 +68,62 @@ class LiveStreamCrawler:
             title = title.replace("-", "").replace(" ", "")
         return title.strip()
 
-    def getCCTVWeight(self, title):
-        m = re.search(r'CCTV(\d+)', title, re.I)
-        if m: return int(m.group(1))
-        special = {"CCTV8K":100, "CCTVDocumentary":101, "CCTV戲曲":102, "CCTV第一劇場":103, "CCTV风云足球":104}
-        for k,v in special.items():
-            if k in title: return v
-        return 999
+    def get_weight(self, title, group_type):
+        """根据分组类型计算标题权重"""
+        title_upper = title.upper()
+        
+        if group_type == "CCTV":
+            m = re.search(r'CCTV(\d+)', title_upper)
+            if m: return int(m.group(1))
+            special = {"CCTV8K":100, "CCTVDOCUMENTARY":101, "CCTV戲曲":102, "CCTV第一劇場":103, "CCTV风云足球":104}
+            for k,v in special.items():
+                if k in title_upper: return v
+            return 999
 
-    def check_url_speed(self, item):
-        """核心改进：读取真实数据块测速"""
+        elif group_type == "HK":
+            # 香港排序逻辑：凤凰 > 中文 > 英文
+            if "凤凰" in title or "鳳凰" in title: return 1
+            if "中文" in title: return 2
+            if "英文" in title or "ENGLISH" in title_upper: return 3
+            return 10
+
+        elif group_type == "TW":
+            # 台湾排序逻辑：新闻 > 综合 > 娱乐
+            if "新闻" in title or "新聞" in title: return 1
+            if "综合" in title or "綜合" in title: return 2
+            if "娱乐" in title or "娛樂" in title: return 3
+            return 10
+            
+        return 0
+
+    def check_url_speed(self, item, group_type):
         try:
             start = time.time()
-            # stream=True 模式开启
             with requests.get(item['url'], headers=HEADERS, timeout=TIMEOUT, stream=True) as r:
                 if r.status_code == 200:
-                    # 尝试读取前 1024 字节，确保流是活的
                     for _ in r.iter_content(chunk_size=1024):
                         break
                     duration = time.time() - start
-                    return {**item, "speed": duration, "weight": self.getCCTVWeight(item['title'])}
+                    return {**item, "speed": duration, "weight": self.get_weight(item['title'], group_type)}
         except:
             pass
         return None
 
     def speedTestSelectedGroups(self):
-        print("开始进行真实数据流测速排序...")
+        print("开始分类测速排序...")
         for group_name in list(self.finalGroups.keys()):
             channels = self.finalGroups[group_name]
             if not channels: continue
             
             if group_name in SPEED_TEST_GROUPS:
-                print(f"正在测速分组: {group_name}，频道数量: {len(channels)}")
-                with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-                    results = list(executor.map(self.check_url_speed, channels))
+                # 确定当前分组属于哪种排序逻辑
+                g_type = "CCTV" if "央视" in group_name else ("HK" if "香港" in group_name else "OTHER")
                 
-                # 双重排序：先频道号 weight，再延迟时间 speed
+                with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+                    # 将 g_type 传入测速函数
+                    results = list(executor.map(lambda x: self.check_url_speed(x, g_type), channels))
+                
+                # 双重排序：权重升序，同权重内速度升序
                 valid_sorted = sorted([r for r in results if r], key=lambda x: (x['weight'], x['speed']))
                 for item in valid_sorted: 
                     item.pop('speed', None)
@@ -138,7 +157,11 @@ class LiveStreamCrawler:
     def processTaiwan(self):
         key = "台灣,#genre#"
         if key not in self.parsedData: return
-        self.finalGroups["台灣,#genre#"] = [{"title": self.cleanTitle(ch["title"]), "url": ch["url"]} for ch in self.parsedData[key]]
+        # 台湾分组不参与 SPEED_TEST_GROUPS 测速，但我们手动处理它的排序
+        channels = [{"title": self.cleanTitle(ch["title"]), "url": ch["url"]} for ch in self.parsedData[key]]
+        # 按照 新闻 > 综合 > 娱乐 排序
+        channels.sort(key=lambda x: self.get_weight(x['title'], "TW"))
+        self.finalGroups["台灣,#genre#"] = channels
 
     def processProvinceFromMainland(self):
         key = "中國大陸,#genre#"
@@ -158,7 +181,6 @@ class LiveStreamCrawler:
                     province_groups[province].append({"title": clean, "url": ch["url"]})
                     found = True; break
             if not found: province_groups["其他省份"].append({"title": clean, "url": ch["url"]})
-        
         for p in province_map:
             if province_groups[p]: self.finalGroups[f"{p},#genre#"] = province_groups[p]
 
@@ -178,7 +200,6 @@ class LiveStreamCrawler:
         
         with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
             f.write("\n".join(lines).rstrip() + "\n")
-        print(f"成功生成 {OUTPUT_FILE}")
 
 if __name__ == "__main__":
     LiveStreamCrawler()
