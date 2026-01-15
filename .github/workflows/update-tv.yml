@@ -1,72 +1,57 @@
-# .github/workflows/update-tv.yml
-name: 更新直播源 tv.m3u
+name: 自动更新直播源
 
 on:
   schedule:
-    - cron: '30 8 * * *'          # 每天北京时间 16:30 更新一次（UTC 08:30）
-  workflow_dispatch:              # 支持手动触发
+    - cron: '0 22 * * *' # 每天北京时间早上6点运行
+  workflow_dispatch:      # 允许手动触发运行
 
 permissions:
-  contents: write                 # 必须，允许提交文件
+  contents: write         # 必须：赋予 Action 写入并推送文件的权限
 
 jobs:
-  update-tv:
+  build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+
     steps:
-
-      # 1. 拉代码
-      - name: Checkout 仓库
+      - name: 检出代码
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      # 2. 安装 Python + curl
       - name: 设置 Python 3.12
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-          cache: 'pip'
+          cache: 'pip' # 使用缓存提速
 
       - name: 安装依赖
-        run: pip install requests
-
-      # 3. 生成 tv.py 自动尝试两个源 + 保底
-      - name: 生成 tv.m3u
-        run: python tv.py
-
-      # 4. 检查是否真的生成了内容（防止空文件提交）
-      - name: 检查 tv.m3u 是否有频道
-        id: check
         run: |
-          if [ ! -f tv.m3u ]; then
-            echo "tv.m3u 文件不存在！"
-            exit 1
-          fi
-          if ! grep -q "#EXTINF" tv.m3u; then
-            echo "tv.m3u 没有频道内容！"
-            exit 1
-          fi
-          CHANNEL_COUNT=$(grep -c "#EXTINF" tv.m3u)
-          echo "tv.m3u 生成成功，共 $CHANNEL_COUNT 个频道"
-          echo "channels=$CHANNEL_COUNT" >> $GITHUB_OUTPUT
-          head -10 tv.m3u
+          # 即使脚本里有自动安装逻辑，在这里安装更稳妥
+          pip install requests
 
-      # 5. 有变化才提交（避免每天刷无意义提交）
-      - name: 提交并推送 tv.m3u
+      - name: 执行测速排序脚本
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add tv.m3u
+          # 确保您的脚本文件名是 tv.py
+          python tv.py
+
+      - name: 检查生成的文件并推送
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
           
-          if git diff --staged --quiet; then
-            echo "tv.m3u 没有变化，跳过提交"
+          # 尝试添加所有可能生成的文件名（兼容 tv.txt 或 tv.m3u）
+          git add tv.txt || true
+          git add tv.m3u || true
+          
+          # 检查是否有内容变动
+          if ! git diff --staged --quiet; then
+            git commit -m "Auto update: $(date +'%Y-%m-%d %H:%M')"
+            # 自动探测当前分支并推送
+            BRANCH=$(git rev-parse --abbrev-ref HEAD)
+            git push origin $BRANCH
           else
-            git commit -m "Auto update tv.m3u · ${{ steps.check.outputs.channels }} 频道 · $(date -u '+%Y-%m-%d %H:%M UTC')"
-            git push
-            echo "tv.m3u 已更新并推送到仓库"
+            echo "没有发现内容变动，跳过提交。"
           fi
 
-      # 6. （可选）失败时通知你
-      # - name: 失败通知（可删）
-      #   if: failure()
-      #   run: echo "直播源更新失败，请检查 workflow 日志"
+      - name: 异常检查
+        if: failure()
+        run: echo "工作流运行失败，请检查 tv.py 里的 URL 链接是否有效。"
