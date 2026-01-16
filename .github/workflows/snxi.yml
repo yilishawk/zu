@@ -1,0 +1,39 @@
+name: Shaanxi IPTV Auto Update
+
+on:
+  schedule:
+    - cron: '0 22 * * *' # 每天北京时间早晨6点运行 (UTC 22:00)
+  workflow_dispatch:      # 允许手动触发运行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v3
+
+    - name: 安装 Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: 安装系统依赖 (ffmpeg)
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y ffmpeg
+
+    - name: 安装 Python 依赖
+      run: |
+        pip install requests
+
+    - name: 运行爬虫脚本
+      run: python shaanxi_udpxy.py
+
+    - name: 提交并推送更新
+      run: |
+        git config --global user.name "GitHub Action"
+        git config --global user.email "action@github.com"
+        git add Shaanxi_IPTV.txt
+        git commit -m "自动更新陕西直播源: $(date +'%Y-%m-%d %H:%M:%S')" || exit 0
+        git push
