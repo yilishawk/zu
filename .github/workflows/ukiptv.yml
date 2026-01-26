@@ -1,0 +1,35 @@
+name: Update IPTV List
+
+on:
+  schedule:
+    - cron: '0 22 * * *' # 每天北京时间早上6点运行
+  workflow_dispatch:      # 允许手动启动
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3
+
+      - name: 设置 Python 运行环境
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 安装依赖
+        run: pip install requests
+
+      - name: 执行抓取脚本
+        run: python ukiptv.py 
+
+      - name: 提交更新结果
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add ukiptv.txt ip/*.txt
+          git commit -m "Auto update: $(date +'%Y-%m-%d %H:%M:%S')" || exit 0
+          git push
