@@ -31,6 +31,6 @@ jobs:
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add ukiptv.txt IP_Lists/*.txt
+        git add ukiptv.txt ip/*.txt
         git commit -m "自动更新 IPTV 列表: $(date +'%Y-%m-%d %H:%M:%S')" || exit 0
         git push
