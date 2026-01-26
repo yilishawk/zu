@@ -11,7 +11,7 @@ BASE_URL = "http://foodieguide.com/iptvsearch/iptvmulticast.php"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
 }
-IP_DIR, RTP_DIR = "IP_Lists", "rtp"
+IP_DIR, RTP_DIR = "ip", "rtp"
 OUTPUT_FILE = "ukiptv.txt"
 MAX_SOURCES_PER_CHANNEL = 4 
 
