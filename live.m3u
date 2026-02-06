@@ -57,6 +57,72 @@ http://hlsztemgsplive.miguvideo.com:8080/migu/kailu/20200324/cctv15hd/51/index.m
 http://74.91.26.218:82/live/cctv16hd.m3u8
 #EXTINF:-1 tvg-id="CCTV17农业农村" tvg-name="CCTV17农业农村" tvg-logo="" group-title="咪咕 央视频道",CCTV17农业农村
 http://hlsztemgsplive.miguvideo.com:8080/migu/kailu/20200324/cctv17hd/51/index.m3u8?msisdn=2026020606362971693c5f494e4504869a5cc28d5e5796&mdspid=&spid=699004&netType=0&sid=5501083631&pid=2028597139&timestamp=20260206063629&Channel_ID=0116_2600036500-99000-201600010014255&ProgramID=673168256&ParentNodeID=-99&assertID=5501083631&client_ip=113.6.228.124&SecurityKey=20260206063629&promotionId=&mvid=5102910396&mcid=500020&playurlVersion=WX-A1-9.1.1.3-RELEASE&userid=&jmhm=&videocodec=h264&appCode=miguvideo_android&bean=mgspad&tid=android&conFee=0&encrypt=6e7b5b21b25ce41a38dd84a6750f0c67&sv=10004&ct=android
+#EXTINF:-1 tvg-id="cctv1" tvg-name="CCTV-1 綜合" group-title="Cat 央视频道",CCTV-1 綜合
+https://live.catvod.com/live.php?id=cctv1
+#EXTINF:-1 tvg-id="cctv2" tvg-name="CCTV-2 財經" group-title="Cat 央视频道",CCTV-2 財經
+https://live.catvod.com/live.php?id=cctv2
+#EXTINF:-1 tvg-id="cctv3" tvg-name="CCTV-3 綜藝" group-title="Cat 央视频道",CCTV-3 綜藝
+https://live.catvod.com/live.php?id=cctv3
+#EXTINF:-1 tvg-id="Cctv4" tvg-name="CCTV-4 中文國際" group-title="Cat 央视频道",CCTV-4 中文國際
+https://live.catvod.com/live.php?id=Cctv4
+#EXTINF:-1 tvg-id="cctv4" tvg-name="CCTV-4 中文國際 (備:1)" group-title="Cat 央视频道",CCTV-4 中文國際 (備:1)
+https://live.catvod.com/live.php?id=cctv4
+#EXTINF:-1 tvg-id="cctv6" tvg-name="CCTV-6 電影" group-title="Cat 央视频道",CCTV-6 電影
+https://live.catvod.com/live.php?id=cctv6
+#EXTINF:-1 tvg-id="cctv7" tvg-name="CCTV-7 軍事農業" group-title="Cat 央视频道",CCTV-7 軍事農業
+https://live.catvod.com/live.php?id=cctv7
+#EXTINF:-1 tvg-id="cctv8hd" tvg-name="CCTV-8 電視劇" group-title="Cat 央视频道",CCTV-8 電視劇
+https://live.catvod.com/live.php?id=cctv8hd
+#EXTINF:-1 tvg-id="cctv9hd" tvg-name="CCTV-9 紀錄" group-title="Cat 央视频道",CCTV-9 紀錄
+https://live.catvod.com/live.php?id=cctv9hd
+#EXTINF:-1 tvg-id="cctv10hd" tvg-name="CCTV-10 科教" group-title="Cat 央视频道",CCTV-10 科教
+https://live.catvod.com/live.php?id=cctv10hd
+#EXTINF:-1 tvg-id="cctv11" tvg-name="CCTV-11 戲曲" group-title="Cat 央视频道",CCTV-11 戲曲
+https://live.catvod.com/live.php?id=cctv11
+#EXTINF:-1 tvg-id="cctv12" tvg-name="CCTV-12 社會與法" group-title="Cat 央视频道",CCTV-12 社會與法
+https://live.catvod.com/live.php?id=cctv12
+#EXTINF:-1 tvg-id="cctv14" tvg-name="CCTV-14 少兒" group-title="Cat 央视频道",CCTV-14 少兒
+https://live.catvod.com/live.php?id=cctv14
+#EXTINF:-1 tvg-id="cctv15" tvg-name="CCTV-15 音樂" group-title="Cat 央视频道",CCTV-15 音樂
+https://live.catvod.com/live.php?id=cctv15
+#EXTINF:-1 tvg-id="hunan_twn" tvg-name="湖南卫视" group-title="Cat 央视频道",湖南卫视
+https://live.catvod.com/live.php?id=hunan_twn
+#EXTINF:-1 tvg-id="zhejiang_twn" tvg-name="浙江卫视" group-title="Cat 央视频道",浙江卫视
+https://live.catvod.com/live.php?id=zhejiang_twn
+#EXTINF:-1 tvg-id="jiangsu_twn" tvg-name="江苏卫视" group-title="Cat 央视频道",江苏卫视
+https://live.catvod.com/live.php?id=jiangsu_twn
+#EXTINF:-1 tvg-id="cctv13" tvg-name="CCTV-13 新聞與頻道" group-title="Cat 央视频道",CCTV-13 新聞與頻道
+https://live.catvod.com/live.php?id=cctv13
+#EXTINF:-1 tvg-id="shenzhen" tvg-name="深圳卫视" group-title="Cat 央视频道",深圳卫视
+https://live.catvod.com/live.php?id=shenzhen
+#EXTINF:-1 tvg-id="fujian" tvg-name="福建东南卫视" group-title="Cat 央视频道",福建东南卫视
+https://live.catvod.com/live.php?id=fujian
+#EXTINF:-1 tvg-id="nanfang_twn" tvg-name="广东南方卫视" group-title="Cat 央视频道",广东南方卫视
+https://live.catvod.com/live.php?id=nanfang_twn
+#EXTINF:-1 tvg-id="guangdongweishi_twn" tvg-name="广东卫视" group-title="Cat 央视频道",广东卫视
+https://live.catvod.com/live.php?id=guangdongweishi_twn
+#EXTINF:-1 tvg-id="beijing" tvg-name="北京卫视" group-title="Cat 央视频道",北京卫视
+https://live.catvod.com/live.php?id=beijing
+#EXTINF:-1 tvg-id="zhujiang" tvg-name="珠江台" group-title="Cat 央视频道",珠江台
+https://live.catvod.com/live.php?id=zhujiang
+#EXTINF:-1 tvg-id="guangxi" tvg-name="广西卫视" group-title="Cat 央视频道",广西卫视
+https://live.catvod.com/live.php?id=guangxi
+#EXTINF:-1 tvg-id="CGTN" tvg-name="CGTN" group-title="Cat 央视频道",CGTN
+https://live.catvod.com/live.php?id=CGTN
+#EXTINF:-1 tvg-id="hubei" tvg-name="湖北卫视" group-title="Cat 央视频道",湖北卫视
+https://live.catvod.com/live.php?id=hubei
+#EXTINF:-1 tvg-id="sichuan_twn" tvg-name="四川卫视" group-title="Cat 央视频道",四川卫视
+https://live.catvod.com/live.php?id=sichuan_twn
+#EXTINF:-1 tvg-id="cctv5" tvg-name="CCTV-5 體育" group-title="Cat 央视频道",CCTV-5 體育
+https://live.catvod.com/live.php?id=cctv5
+#EXTINF:-1 tvg-id="cctv5plus" tvg-name="CCTV-5+ 體育" group-title="Cat 央视频道",CCTV-5+ 體育
+https://live.catvod.com/live.php?id=cctv5plus
+#EXTINF:-1 tvg-id="dongfangweishi_twn" tvg-name="东方卫视" group-title="Cat 央视频道",东方卫视
+https://live.catvod.com/live.php?id=dongfangweishi_twn
+#EXTINF:-1 tvg-id="phoenixtv_hd" tvg-name="凤凰卫视" group-title="Cat 央视频道",凤凰卫视
+https://live.catvod.com/live.php?id=phoenixtv_hd
+#EXTINF:-1 tvg-id="phoenixinfo_hd" tvg-name="鳳凰資訊" group-title="Cat 央视频道",鳳凰資訊
+https://live.catvod.com/live.php?id=phoenixinfo_hd
 #EXTINF:-1 tvg-id="浙江卫视" tvg-name="浙江卫视" tvg-logo="" group-title="咪咕 卫视频道",浙江卫视
 http://ali-xwl.cztv.com/live/channel011080Plxw.m3u8
 #EXTINF:-1 tvg-id="浙江卫视" tvg-name="浙江卫视" tvg-logo="" group-title="咪咕 卫视频道",浙江卫视
@@ -81,6 +147,198 @@ http://hlsztemgsplive.miguvideo.com:8080/envivo_v/2018/SD/jilin/1000/index.m3u8?
 http://hlsztemgsplive.miguvideo.com:8080/migu/kailu/jxwshd/51/20190820/index.m3u8?msisdn=202602060633546b0d473cd2ee4f3aacb078cb2d468d27&mdspid=&spid=600633&netType=0&sid=5910021492&pid=2028597139&timestamp=20260206063354&Channel_ID=0116_2600036500-99000-201600010014250&ProgramID=783847495&ParentNodeID=-99&assertID=5910021492&client_ip=113.6.228.129&SecurityKey=20260206063354&promotionId=&mvid=5900004351&mcid=500020&playurlVersion=WX-A1-9.1.1.3-RELEASE&userid=&jmhm=&videocodec=h264&appCode=miguvideo_android&bean=mgspad&tid=android&conFee=0&encrypt=e2ae1534158c2dbb23cf80ef823acaea&sv=10004&ct=android
 #EXTINF:-1 tvg-id="兵团卫视" tvg-name="兵团卫视" tvg-logo="" group-title="咪咕 卫视频道",兵团卫视
 http://hlsztemgsplive.miguvideo.com:8080/migu/kailu/btws/51/20250804/index.m3u8?msisdn=20260206063222d85edf790bdc404e9a8eb2f8c03e00da&mdspid=&spid=600697&netType=0&sid=5910022192&pid=2028597139&timestamp=20260206063222&Channel_ID=0116_2600036500-99000-201600010014247&ProgramID=956923145&ParentNodeID=-99&assertID=5910022192&client_ip=113.6.228.131&SecurityKey=20260206063222&promotionId=&mvid=5900006716&mcid=500020&playurlVersion=WX-A1-9.1.1.3-RELEASE&userid=&jmhm=&videocodec=h264&appCode=miguvideo_android&bean=mgspad&tid=android&conFee=0&encrypt=c0fae84f785d7e29b75df8d44bd29277&sv=10004&ct=android
+#EXTINF:-1 tvg-id="jade_twn" tvg-name="翡翠台" group-title="Cat 香港",翡翠台
+https://live.catvod.com/live.php?id=jade_twn
+#EXTINF:-1 tvg-id="jade_xue" tvg-name="翡翠台 (Back up 1)" group-title="Cat 香港",翡翠台 (Back up 1)
+https://live.catvod.com/live.php?id=jade_xue
+#EXTINF:-1 tvg-id="inews_twn" tvg-name="iNews 互動新聞台" group-title="Cat 香港",iNews 互動新聞台
+https://live.catvod.com/live.php?id=inews_twn
+#EXTINF:-1 tvg-id="j2_twn" tvg-name="J 2" group-title="Cat 香港",J 2
+https://live.catvod.com/live.php?id=j2_twn
+#EXTINF:-1 tvg-id="pearl_twn" tvg-name="珍珠台" group-title="Cat 香港",珍珠台
+https://live.catvod.com/live.php?id=pearl_twn
+#EXTINF:-1 tvg-id="hkphoenix_twn" tvg-name="凤凰香港" group-title="Cat 香港",凤凰香港
+https://live.catvod.com/live.php?id=hkphoenix_twn
+#EXTINF:-1 tvg-id="hoycaijing_twn" tvg-name="无线财经资讯台" group-title="Cat 香港",无线财经资讯台
+https://live.catvod.com/live.php?id=hoycaijing_twn
+#EXTINF:-1 tvg-id="rhk31_twn" tvg-name="RHK 31" group-title="Cat 香港",RHK 31
+https://live.catvod.com/live.php?id=rhk31_twn
+#EXTINF:-1 tvg-id="viu1_twn" tvg-name="VIUTV1" group-title="Cat 香港",VIUTV1
+https://live.catvod.com/live.php?id=viu1_twn
+#EXTINF:-1 tvg-id="rhk32_twn" tvg-name="RHK 32" group-title="Cat 香港",RHK 32
+https://live.catvod.com/live.php?id=rhk32_twn
+#EXTINF:-1 tvg-id="Tvbasia" tvg-name="TVB Asia" group-title="Cat 香港",TVB Asia
+https://live.catvod.com/live.php?id=Tvbasia
+#EXTINF:-1 tvg-id="phoenixtv_hd" tvg-name="凤凰卫视" group-title="Cat 香港",凤凰卫视
+https://live.catvod.com/live.php?id=phoenixtv_hd
+#EXTINF:-1 tvg-id="phoenixinfo_hd" tvg-name="鳳凰資訊" group-title="Cat 香港",鳳凰資訊
+https://live.catvod.com/live.php?id=phoenixinfo_hd
+#EXTINF:-1 tvg-id="Tvbentertainment" tvg-name="TVB Entertainment" group-title="Cat 香港",TVB Entertainment
+https://live.catvod.com/live.php?id=Tvbentertainment
+#EXTINF:-1 tvg-id="Tvbclassic" tvg-name="TVB Classic" group-title="Cat 香港",TVB Classic
+https://live.catvod.com/live.php?id=Tvbclassic
+#EXTINF:-1 tvg-id="viusix_twn" tvg-name="Viu6" group-title="Cat 香港",Viu6
+https://live.catvod.com/live.php?id=viusix_twn
+#EXTINF:-1 tvg-id="tvbshuanle_twn" tvg-name="TVBS 歡樂台" group-title="Cat 台湾",TVBS 歡樂台
+https://live.catvod.com/live.php?id=tvbshuanle_twn
+#EXTINF:-1 tvg-id="tvbs" tvg-name="TVBS HD" group-title="Cat 台湾",TVBS HD
+https://live.catvod.com/live.php?id=tvbs
+#EXTINF:-1 tvg-id="ctient" tvg-name="中天娱乐 CTI Entertaiment" group-title="Cat 台湾",中天娱乐 CTI Entertaiment
+https://live.catvod.com/live.php?id=ctient
+#EXTINF:-1 tvg-id="ctizhonghe" tvg-name="中天综合 CTI Metro" group-title="Cat 台湾",中天综合 CTI Metro
+https://live.catvod.com/live.php?id=ctizhonghe
+#EXTINF:-1 tvg-id="ctiasia_twn" tvg-name="中天亚洲台" group-title="Cat 台湾",中天亚洲台
+https://live.catvod.com/live.php?id=ctiasia_twn
+#EXTINF:-1 tvg-id="ttv_taiwan" tvg-name="台视 TTV HD" group-title="Cat 台湾",台视 TTV HD
+https://live.catvod.com/live.php?id=ttv_taiwan
+#EXTINF:-1 tvg-id="ttvzhonghe" tvg-name="台视综合台" group-title="Cat 台湾",台视综合台
+https://live.catvod.com/live.php?id=ttvzhonghe
+#EXTINF:-1 tvg-id="zhongshihd_twn" tvg-name="中视 HD" group-title="Cat 台湾",中视 HD
+https://live.catvod.com/live.php?id=zhongshihd_twn
+#EXTINF:-1 tvg-id="ftvhd_taiwan" tvg-name="民视 HD" group-title="Cat 台湾",民视 HD
+https://live.catvod.com/live.php?id=ftvhd_taiwan
+#EXTINF:-1 tvg-id="ftvtaiwan_twn" tvg-name="民视台湾台" group-title="Cat 台湾",民视台湾台
+https://live.catvod.com/live.php?id=ftvtaiwan_twn
+#EXTINF:-1 tvg-id="ctshd_twn" tvg-name="华视 CTS HD" group-title="Cat 台湾",华视 CTS HD
+https://live.catvod.com/live.php?id=ctshd_twn
+#EXTINF:-1 tvg-id="ctv18_twn" tvg-name="公视 CTV" group-title="Cat 台湾",公视 CTV
+https://live.catvod.com/live.php?id=ctv18_twn
+#EXTINF:-1 tvg-id="badafirst" tvg-name="八大第一 GTV First" group-title="Cat 台湾",八大第一 GTV First
+https://live.catvod.com/live.php?id=badafirst
+#EXTINF:-1 tvg-id="badazhonghe" tvg-name="八大综合 GTV Metro" group-title="Cat 台湾",八大综合 GTV Metro
+https://live.catvod.com/live.php?id=badazhonghe
+#EXTINF:-1 tvg-id="badadrama" tvg-name="八大戏剧 GTV Drama" group-title="Cat 台湾",八大戏剧 GTV Drama
+https://live.catvod.com/live.php?id=badadrama
+#EXTINF:-1 tvg-id="badaentertain" tvg-name="八大娱乐 GTV Entertainment" group-title="Cat 台湾",八大娱乐 GTV Entertainment
+https://live.catvod.com/live.php?id=badaentertain
+#EXTINF:-1 tvg-id="hbohd_twn" tvg-name="HBO_HD" group-title="Cat 台湾",HBO_HD
+https://live.catvod.com/live.php?id=hbohd_twn
+#EXTINF:-1 tvg-id="hbohits_twn" tvg-name="HBO_HITS" group-title="Cat 台湾",HBO_HITS
+https://live.catvod.com/live.php?id=hbohits_twn
+#EXTINF:-1 tvg-id="hbosignature_twn" tvg-name="HBO Signature Taiwan" group-title="Cat 台湾",HBO Signature Taiwan
+https://live.catvod.com/live.php?id=hbosignature_twn
+#EXTINF:-1 tvg-id="hollywoodmovies_twn" tvg-name="Hollywood Movies" group-title="Cat 台湾",Hollywood Movies
+https://live.catvod.com/live.php?id=hollywoodmovies_twn
+#EXTINF:-1 tvg-id="sanlitaiwan" tvg-name="三立台湾 Sanli Taiwan" group-title="Cat 台湾",三立台湾 Sanli Taiwan
+https://live.catvod.com/live.php?id=sanlitaiwan
+#EXTINF:-1 tvg-id="sanlixiju_twn" tvg-name="三立戏剧台" group-title="Cat 台湾",三立戏剧台
+https://live.catvod.com/live.php?id=sanlixiju_twn
+#EXTINF:-1 tvg-id="sanlizhonghe" tvg-name="三立综合 Sanli Metro" group-title="Cat 台湾",三立综合 Sanli Metro
+https://live.catvod.com/live.php?id=sanlizhonghe
+#EXTINF:-1 tvg-id="sanlidouhui_twn" tvg-name="三立都会台" group-title="Cat 台湾",三立都会台
+https://live.catvod.com/live.php?id=sanlidouhui_twn
+#EXTINF:-1 tvg-id="ettvzhonghe" tvg-name="东森综合 ETTV Metro" group-title="Cat 台湾",东森综合 ETTV Metro
+https://live.catvod.com/live.php?id=ettvzhonghe
+#EXTINF:-1 tvg-id="ettvdrama" tvg-name="东森戏剧 ETTV Drama" group-title="Cat 台湾",东森戏剧 ETTV Drama
+https://live.catvod.com/live.php?id=ettvdrama
+#EXTINF:-1 tvg-id="ctv2_twn" tvg-name="公视2" group-title="Cat 台湾",公视2
+https://live.catvod.com/live.php?id=ctv2_twn
+#EXTINF:-1 tvg-id="daai_twn" tvg-name="大爱1台" group-title="Cat 台湾",大爱1台
+https://live.catvod.com/live.php?id=daai_twn
+#EXTINF:-1 tvg-id="lunghuaxiju_twn" tvg-name="龙华戏剧 Lunghua Drama" group-title="Cat 台湾",龙华戏剧 Lunghua Drama
+https://live.catvod.com/live.php?id=lunghuaxiju_twn
+#EXTINF:-1 tvg-id="lunghuajingdian_twn" tvg-name="龙华经典台" group-title="Cat 台湾",龙华经典台
+https://live.catvod.com/live.php?id=lunghuajingdian_twn
+#EXTINF:-1 tvg-id="lunghuaidol_twn" tvg-name="龙华偶像" group-title="Cat 台湾",龙华偶像
+https://live.catvod.com/live.php?id=lunghuaidol_twn
+#EXTINF:-1 tvg-id="axn_twn" tvg-name="AXN Taiwan" group-title="Cat 台湾",AXN Taiwan
+https://live.catvod.com/live.php?id=axn_twn
+#EXTINF:-1 tvg-id="jingtianintl_twn" tvg-name="靖天国际台" group-title="Cat 台湾",靖天国际台
+https://live.catvod.com/live.php?id=jingtianintl_twn
+#EXTINF:-1 tvg-id="cinemax_twn" tvg-name="CINEMAX" group-title="Cat 台湾",CINEMAX
+https://live.catvod.com/live.php?id=cinemax_twn
+#EXTINF:-1 tvg-id="niandainews_twn" tvg-name="年代新闻" group-title="Cat 台湾",年代新闻
+https://live.catvod.com/live.php?id=niandainews_twn
+#EXTINF:-1 tvg-id="videolandjapan" tvg-name="纬来日本台" group-title="Cat 台湾",纬来日本台
+https://live.catvod.com/live.php?id=videolandjapan
+#EXTINF:-1 tvg-id="videolandmovie" tvg-name="纬来电影台" group-title="Cat 台湾",纬来电影台
+https://live.catvod.com/live.php?id=videolandmovie
+#EXTINF:-1 tvg-id="videolandsport" tvg-name="纬来体育台" group-title="Cat 台湾",纬来体育台
+https://live.catvod.com/live.php?id=videolandsport
+#EXTINF:-1 tvg-id="videolandzonghe" tvg-name="纬来综合台" group-title="Cat 台湾",纬来综合台
+https://live.catvod.com/live.php?id=videolandzonghe
+#EXTINF:-1 tvg-id="videolandmax" tvg-name="纬来育乐" group-title="Cat 台湾",纬来育乐
+https://live.catvod.com/live.php?id=videolandmax
+#EXTINF:-1 tvg-id="videolandtv" tvg-name="纬来精彩" group-title="Cat 台湾",纬来精彩
+https://live.catvod.com/live.php?id=videolandtv
+#EXTINF:-1 tvg-id="dw_twn" tvg-name="DW (Deutsch)" group-title="Cat 台湾",DW (Deutsch)
+https://live.catvod.com/live.php?id=dw_twn
+#EXTINF:-1 tvg-id="good2_twn" tvg-name="好消息 2" group-title="Cat 台湾",好消息 2
+https://live.catvod.com/live.php?id=good2_twn
+#EXTINF:-1 tvg-id="daai2_twn" tvg-name="大爱2台" group-title="Cat 台湾",大爱2台
+https://live.catvod.com/live.php?id=daai2_twn
+#EXTINF:-1 tvg-id="afc_twn" tvg-name="亚洲美食" group-title="Cat 台湾",亚洲美食
+https://live.catvod.com/live.php?id=afc_twn
+#EXTINF:-1 tvg-id="tlc_twn" tvg-name="亚洲旅游 TLC Asia" group-title="Cat 台湾",亚洲旅游 TLC Asia
+https://live.catvod.com/live.php?id=tlc_twn
+#EXTINF:-1 tvg-id="ettvmovie" tvg-name="东森电影 ETTV Movie" group-title="Cat 台湾",东森电影 ETTV Movie
+https://live.catvod.com/live.php?id=ettvmovie
+#EXTINF:-1 tvg-id="arirang_twn" tvg-name="阿里郎 Arirang" group-title="Cat 台湾",阿里郎 Arirang
+https://live.catvod.com/live.php?id=arirang_twn
+#EXTINF:-1 tvg-id="bosisport1_twn" tvg-name="博斯运动 1" group-title="Cat 台湾",博斯运动 1
+https://live.catvod.com/live.php?id=bosisport1_twn
+#EXTINF:-1 tvg-id="bosisport2_twn" tvg-name="博斯运动 2" group-title="Cat 台湾",博斯运动 2
+https://live.catvod.com/live.php?id=bosisport2_twn
+#EXTINF:-1 tvg-id="bosigolf2_twn" tvg-name="博斯高球2 HD" group-title="Cat 台湾",博斯高球2 HD
+https://live.catvod.com/live.php?id=bosigolf2_twn
+#EXTINF:-1 tvg-id="bositennis_twn" tvg-name="博斯网球 HD" group-title="Cat 台湾",博斯网球 HD
+https://live.catvod.com/live.php?id=bositennis_twn
+#EXTINF:-1 tvg-id="ettvwestern" tvg-name="东森洋片 ETTV Western" group-title="Cat 台湾",东森洋片 ETTV Western
+https://live.catvod.com/live.php?id=ettvwestern
+#EXTINF:-1 tvg-id="lunghuawestern_twn" tvg-name="龙华洋片 Lunghua Western" group-title="Cat 台湾",龙华洋片 Lunghua Western
+https://live.catvod.com/live.php?id=lunghuawestern_twn
+#EXTINF:-1 tvg-id="bosiunlimited_twn" tvg-name="博斯无限" group-title="Cat 台湾",博斯无限
+https://live.catvod.com/live.php?id=bosiunlimited_twn
+#EXTINF:-1 tvg-id="mtvhd_twn" tvg-name="MTV Live" group-title="Cat 台湾",MTV Live
+https://live.catvod.com/live.php?id=mtvhd_twn
+#EXTINF:-1 tvg-id="lungxiangtime_twn" tvg-name="龙详时代" group-title="Cat 台湾",龙详时代
+https://live.catvod.com/live.php?id=lungxiangtime_twn
+#EXTINF:-1 tvg-id="eyetvtravel_twn" tvg-name="EYETV 旅游" group-title="Cat 台湾",EYETV 旅游
+https://live.catvod.com/live.php?id=eyetvtravel_twn
+#EXTINF:-1 tvg-id="jingtiancartoon_twn" tvg-name="靖天卡通台" group-title="Cat 台湾",靖天卡通台
+https://live.catvod.com/live.php?id=jingtiancartoon_twn
+#EXTINF:-1 tvg-id="eyetvxiju_twn" tvg-name="EYETV 戏剧" group-title="Cat 台湾",EYETV 戏剧
+https://live.catvod.com/live.php?id=eyetvxiju_twn
+#EXTINF:-1 tvg-id="weishichinese_twn" tvg-name="卫视中文台 Star Movies Chinese" group-title="Cat 台湾",卫视中文台 Star Movies Chinese
+https://live.catvod.com/live.php?id=weishichinese_twn
+#EXTINF:-1 tvg-id="yoyo_twn" tvg-name="东森幼幼 Yoyo TV" group-title="Cat 台湾",东森幼幼 Yoyo TV
+https://live.catvod.com/live.php?id=yoyo_twn
+#EXTINF:-1 tvg-id="meiyamovie_twn" tvg-name="美亚电影" group-title="Cat 台湾",美亚电影
+https://live.catvod.com/live.php?id=meiyamovie_twn
+#EXTINF:-1 tvg-id="eltadrama_twn" tvg-name="爱尔达戏剧台" group-title="Cat 台湾",爱尔达戏剧台
+https://live.catvod.com/live.php?id=eltadrama_twn
+#EXTINF:-1 tvg-id="tvbs_n" tvg-name="TVBS News 新聞台" group-title="Cat 台湾",TVBS News 新聞台
+https://live.catvod.com/live.php?id=tvbs_n
+#EXTINF:-1 tvg-id="Afc" tvg-name="Asia Food Network" group-title="Cat 台湾",Asia Food Network
+https://live.catvod.com/live.php?id=Afc
+#EXTINF:-1 tvg-id="ettvnews" tvg-name="東森新聞 ETTV News" group-title="Cat 台湾",東森新聞 ETTV News
+https://live.catvod.com/live.php?id=ettvnews
+#EXTINF:-1 tvg-id="ettvcaijing_twn" tvg-name="東森財經新聞 ETTV Business" group-title="Cat 台湾",東森財經新聞 ETTV Business
+https://live.catvod.com/live.php?id=ettvcaijing_twn
+#EXTINF:-1 tvg-id="ctinews" tvg-name="中天新聞 CTI News" group-title="Cat 台湾",中天新聞 CTI News
+https://live.catvod.com/live.php?id=ctinews
+#EXTINF:-1 tvg-id="feifannews_twn" tvg-name="非凡新聞台" group-title="Cat 台湾",非凡新聞台
+https://live.catvod.com/live.php?id=feifannews_twn
+#EXTINF:-1 tvg-id="ttvnews_twn" tvg-name="台視新聞台 TTV News" group-title="Cat 台湾",台視新聞台 TTV News
+https://live.catvod.com/live.php?id=ttvnews_twn
+#EXTINF:-1 tvg-id="eltasport1_twn" tvg-name="Elta体育1台" group-title="Cat 台湾",Elta体育1台
+https://live.catvod.com/live.php?id=eltasport1_twn
+#EXTINF:-1 tvg-id="eltasport2_twn" tvg-name="Elta體育2台" group-title="Cat 台湾",Elta體育2台
+https://live.catvod.com/live.php?id=eltasport2_twn
+#EXTINF:-1 tvg-id="eltasport3_twn" tvg-name="Elta體育3台" group-title="Cat 台湾",Elta體育3台
+https://live.catvod.com/live.php?id=eltasport3_twn
+#EXTINF:-1 tvg-id="ftvnew_taiwan" tvg-name="民視新聞台 FTV News" group-title="Cat 台湾",民視新聞台 FTV News
+https://live.catvod.com/live.php?id=ftvnew_taiwan
+#EXTINF:-1 tvg-id="huanyuxinwen_twn" tvg-name="寰宇新聞台" group-title="Cat 台湾",寰宇新聞台
+https://live.catvod.com/live.php?id=huanyuxinwen_twn
+#EXTINF:-1 tvg-id="zhongshinews_twn" tvg-name="中視新聞台" group-title="Cat 台湾",中視新聞台
+https://live.catvod.com/live.php?id=zhongshinews_twn
+#EXTINF:-1 tvg-id="dazn1_twn" tvg-name="DAZN 1" group-title="Cat 台湾",DAZN 1
+https://live.catvod.com/live.php?id=dazn1_twn
+#EXTINF:-1 tvg-id="dazn2_twn" tvg-name="DAZN 2" group-title="Cat 台湾",DAZN 2
+https://live.catvod.com/live.php?id=dazn2_twn
+#EXTINF:-1 tvg-id="discoverych_twn" tvg-name="探索频道" group-title="Cat 台湾",探索频道
+https://live.catvod.com/live.php?id=discoverych_twn
 #EXTINF:-1 tvg-id="文山综合" tvg-name="文山综合" tvg-logo="" group-title="咪咕 云南地区",文山综合
 http://m3u8.channel.wsrtv.com.cn/cms/videos/nmip-media/channellive/channel7/playlist.m3u8
 #EXTINF:-1 tvg-id="腾冲综合" tvg-name="腾冲综合" tvg-logo="" group-title="咪咕 云南地区",腾冲综合
