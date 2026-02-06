@@ -11,7 +11,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 # --- 配置区 ---
 BC_CONFIG_URL = 'https://bc.188766.xyz/?ip=&haiwai=true'
 MIGU_M3U_URL = 'https://raw.githubusercontent.com/develop202/migu_video/main/interface.txt'
-CATVOD_URL = 'https://live.catvod.com/tv.m3u'
+CATVOD_URL = 'https://kwyili.dpdns.org/catvod.php'
 BC_UA = 'bingcha/1.1 (mianfeifenxiang)'
 BROWSER_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
 
